@@ -67,10 +67,10 @@ export function UserForm() {
         return(
             <div>
             <form>
-                <label>Email:</label>
-                <input type="text" value={email} onChange={handleChangeEmail} />
                 <label>Name:</label>
                 <input type="text" value={name} onChange={handleChangeUsername} />
+                <label>Email:</label>
+                <input type="text" value={email} onChange={handleChangeEmail} />
                 
             </form>
             <button onClick={handleNext} >Next</button>
@@ -82,10 +82,13 @@ export function UserForm() {
         return(
             <div>
             <form onSubmit={handleSubmit}>
-                <label>Gender:</label>
-                <input type="text" value={gender} onChange={handleChangeGender} />
                 <label>Age:</label>
                 <input type="text" value={age} onChange={handleChangeAge} />
+                <label>Gender:</label>
+                <select value={gender} onChange={handleChangeGender}>
+                    <option value="male">Male</option>
+                    <option vale="female">Female</option>
+                </select>
                 <button type="submit" >Submit</button>
             </form>
             <button onClick={handlePrevious}>Previous</button>

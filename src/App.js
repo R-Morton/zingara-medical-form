@@ -1,9 +1,11 @@
-import { ClientParent } from "./components/ClientParent";
+import { Route, Routes } from "react-router-dom";
 
 
 function App() {
     return (
-        <ClientParent />
+        <Routes>
+            <Route path="/" element={<h1>TODO</h1>} />
+        </Routes>
     );
 }
 
