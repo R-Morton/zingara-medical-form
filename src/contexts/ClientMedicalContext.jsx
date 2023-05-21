@@ -3,6 +3,7 @@ import { useLocalStorage } from "react-use"
 
 const initialMedicalData = [
     {
+        id: 1,
         name: "",
         email: "",
         age: "",

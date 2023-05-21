@@ -1,26 +1,25 @@
 import { useContext, useEffect, useState } from "react";
-import UserContext from "../contexts/ClientMedicalContext"
+import { useMedicalData, useMedicalDispatch } from "../contexts/ClientMedicalContext";
 
 
-export function UserForm() {
-    // Destructure the context data object
-    let {userData, setUserData} = useContext(UserContext);
+
+export function MedicalForm(props) {
+
+    const {id} = props
+
+    // Read data custom hook defined
+    const globalMedicalData = useMedicalData()
+
+    // Write data custom hook defined
+    const globalMedicalDispatch = useMedicalDispatch()
 
     // Set up the form's local state
-    let [name, setName] = useState("");
-    let [email, setEmail] = useState("");
-    const [showForm, setShowForm] = useState(false)
-    const [gender, setGender] = useState("")
-    const [age, setAge] = useState("")
+    let [localName, setLocalName] = useState("");
+    let [localEmail, setLocalEmail] = useState("");
+    const [localGender, setLocalGender] = useState("")
+    const [localAge, setLocalAge] = useState("")
 
     const [index, setIndex] = useState(0)
-
-    useEffect(() => {
-        // After receiving data from context,
-        // apply that data to the form's local state.
-        setName(userData.name);
-        setEmail(userData.email);
-    }, [userData])
 
     const handleChangeEmail = (event) => {
         // Do front-end validations here.
@@ -49,19 +48,27 @@ export function UserForm() {
     const handlePrevious = () => {
         setIndex((prevIndex) => prevIndex -1)
     }
-    
-    useEffect(() => {
-        // Checking if show form is true, which is set once the final form is submitted
-        // Then sends sets the UserData, sending it to Parent for conditional rendering
-        if (showForm) {
-            setUserData({ name, email, gender, age, showForm });
-        }
-    }, [name, email, age, gender, showForm, setUserData]);
 
-    const handleSubmit = () => {
-        setIndex(null)
-        setShowForm(true)
-      };
+    const saveNoteToGlobal = () => {
+		// UX note: saving should exit edit mode, but we won't do that in this app
+		// We'd need to pass in the toggleEditMode stuff from the NoteParent 
+
+		let tempNewForm = {
+			id: id || globalMedicalData.length + 1,
+			name: localName,
+			email: localEmail,
+			age: localAge,
+			gender: localGender,
+		}
+
+		if (id){
+			globalNotesDispatch({type:"update", updatedForm: tempNewForm})
+		} else {
+			globalNotesDispatch({type:"create", newForm: tempNewForm})
+		}
+		
+
+	}
     
     function form1() {
         return(
