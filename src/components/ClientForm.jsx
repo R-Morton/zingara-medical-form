@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useMedicalData, useMedicalDispatch } from "../contexts/ClientMedicalContext";
 
 
@@ -14,8 +14,8 @@ export function MedicalForm(props) {
     const globalMedicalDispatch = useMedicalDispatch()
 
     // Set up the form's local state
-    let [localName, setLocalName] = useState("");
-    let [localEmail, setLocalEmail] = useState("");
+    const [localName, setLocalName] = useState("");
+    const [localEmail, setLocalEmail] = useState("");
     const [localGender, setLocalGender] = useState("")
     const [localAge, setLocalAge] = useState("")
 
@@ -23,22 +23,22 @@ export function MedicalForm(props) {
 
     const handleChangeEmail = (event) => {
         // Do front-end validations here.
-        setEmail(event.target.value);
+        setLocalEmail(event.target.value);
     }
 
     const handleChangeUsername = (event) => {
         // Do front-end validations here.
-        setName(event.target.value);
+        setLocalName(event.target.value);
     }
 
     const handleChangeGender = (event) => {
         // Do front-end validations here.
-        setGender(event.target.value);
+        setLocalGender(event.target.value);
     }
 
     const handleChangeAge = (event) => {
         // Do front-end validations here.
-        setAge(event.target.value);
+        setLocalAge(event.target.value);
     }
 
     const handleNext = () => {
@@ -49,9 +49,7 @@ export function MedicalForm(props) {
         setIndex((prevIndex) => prevIndex -1)
     }
 
-    const saveNoteToGlobal = () => {
-		// UX note: saving should exit edit mode, but we won't do that in this app
-		// We'd need to pass in the toggleEditMode stuff from the NoteParent 
+    const saveToGlobal = () => {
 
 		let tempNewForm = {
 			id: id || globalMedicalData.length + 1,
@@ -62,9 +60,9 @@ export function MedicalForm(props) {
 		}
 
 		if (id){
-			globalNotesDispatch({type:"update", updatedForm: tempNewForm})
+			globalMedicalDispatch({type:"update", updatedForm: tempNewForm})
 		} else {
-			globalNotesDispatch({type:"create", newForm: tempNewForm})
+			globalMedicalDispatch({type:"create", newForm: tempNewForm})
 		}
 		
 
@@ -75,9 +73,9 @@ export function MedicalForm(props) {
             <div>
             <form>
                 <label>Name:</label>
-                <input type="text" value={name} onChange={handleChangeUsername} />
+                <input type="text" value={localName} onChange={handleChangeUsername} />
                 <label>Email:</label>
-                <input type="text" value={email} onChange={handleChangeEmail} />
+                <input type="text" value={localEmail} onChange={handleChangeEmail} />
                 
             </form>
             <button onClick={handleNext} >Next</button>
@@ -88,11 +86,11 @@ export function MedicalForm(props) {
     function form2() {
         return(
             <div>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={saveToGlobal}>
                 <label>Age:</label>
-                <input type="text" value={age} onChange={handleChangeAge} />
+                <input type="text" value={localAge} onChange={handleChangeAge} />
                 <label>Gender:</label>
-                <select value={gender} onChange={handleChangeGender}>
+                <select value={localGender} onChange={handleChangeGender}>
                     <option value="male">Male</option>
                     <option vale="female">Female</option>
                 </select>

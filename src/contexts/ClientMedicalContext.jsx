@@ -25,8 +25,12 @@ const medicalReducer = (previousState, instructions) => {
         
         case "create":
             console.log("TODO - Create new client medical form and add to state")
-            break
-        
+            let newForm = instructions.newForm
+
+            stateEditable.push(newForm)
+
+            return stateEditable
+            
         case "update":
             console.log("TODO - Update existing medical form and update state")
             break
