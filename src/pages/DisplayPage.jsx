@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { ClientInfo } from "../components/ClientDisplay";
 import { useMedicalData } from "../contexts/ClientMedicalContext";
 
@@ -18,7 +19,7 @@ export default function DisplayPage(props) {
                 {globalFormData.map(form => {
                     return(
                         <div key={form.id}>
-                            <ClientInfo id={form.id} />
+                            <Link to={`/client/${form.id}`}> {form.name} </Link>
                         </div>
                     )
                 })}
