@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ClientInfo } from "../components/ClientDisplay";
+import { ClientInfo } from "../components/ClientMedicalDisplay";
 import { useMedicalData } from "../contexts/ClientMedicalContext";
 
 

@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router-dom";
-import { MedicalForm } from "./components/ClientForm";
-import DisplayPage from "./pages/DisplayPage";
-import { ClientInfo } from "./components/ClientDisplay";
+import { MedicalForm } from "./components/ClientMedicalForm";
+import DisplayPage from "./pages/DisplayClientsPage";
+import { ClientInfo } from "./components/ClientMedicalDisplay";
 import ClientDisplayById from "./pages/ClientFormPage";
 import Homepage from "./pages/Homepage";
 
