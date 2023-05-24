@@ -32,7 +32,7 @@ export default function ClientDisplayById() {
         return(
             <div>
                 <h1>Client Notes</h1>
-                <ClientNotesDisplay />
+                <ClientNotesDisplay id={id} />
                 <button onClick={toggleNotesDisplay}>Go back</button>
             </div>
         )

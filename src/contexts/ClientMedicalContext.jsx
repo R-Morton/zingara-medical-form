@@ -8,7 +8,11 @@ const initialMedicalData = [
         email: "",
         age: "",
         gender: "",
-        showForm: false,
+        notes: [{
+            id: 1,
+            createdAt: "",
+            content: ""
+        }]
     }
 ]
 
