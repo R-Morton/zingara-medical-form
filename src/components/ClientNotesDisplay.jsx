@@ -21,8 +21,21 @@ export default function ClientNotesDisplay(props) {
 
     return(
         <div>
+            {localForm.notes ?
+        <div>
         <p>{localForm.name}</p>
-        <p>{localForm.notes.id}</p>
+        {localForm.notes.map(notes => {
+            return(
+                <p>{notes.content}</p>
+            )
+        })}
+        <p>{localForm.notes[0].content}</p>
+        </div>
+            :
+            <div>
+                <h1>No notes found!</h1>    
+            </div>
+            }
         </div>
     )
 }
