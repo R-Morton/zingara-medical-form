@@ -3,8 +3,8 @@ import { useMedicalData, useMedicalDispatch } from "../contexts/ClientMedicalCon
 
 export default function ClientNotesForm(props) {
 
-    const {id} = props
-    const noteId = 2
+    const id = props.id
+    const noteId = props.noteId
 
     // Read data custom hook defined
     const globalMedicalData = useMedicalData()
@@ -13,6 +13,7 @@ export default function ClientNotesForm(props) {
     const globalMedicalDispatch = useMedicalDispatch()
 
     const [localClient, setLocalClient] = useState("")
+    const [localClientNotes, setLocalClientNotes] = useState("")
 
     const [localContent, setLocalContent] = useState("")
     const [localDateCreated, setLocalDateCreated] = useState(Date.now())
@@ -27,12 +28,30 @@ export default function ClientNotesForm(props) {
     }
 
     useEffect(() => {
-
         setLocalClient(globalMedicalData.find(form => {
             // eslint-disable-next-line
             return form.id == id
         }))
     }, [globalMedicalData, id])
+
+    useEffect(() => {
+        setLocalClientNotes(localClient.notes)
+    }, [localClient])
+
+    useEffect(() => {
+        if (localClientNotes) {
+            let tempNote = localClientNotes.find(note => {
+                // eslint-disable-next-line
+                return note.id == noteId
+            })
+            console.log(tempNote)
+            if (tempNote) {
+                setLocalContent(tempNote.content)
+                setLocalDateCreated(tempNote.dateCreatedAt)
+            }
+        }
+    }, [localClientNotes, noteId])
+
 
 
     const saveToGlobal = () => {
@@ -48,11 +67,6 @@ export default function ClientNotesForm(props) {
 
     return (
         <div>
-            {!showNoteForm ?
-            <div>
-                <button onClick={toggleShowForm}>Create new note</button>
-            </div>
-            :
             <div>
                 <form>
                     <label>Content:</label>
@@ -60,7 +74,6 @@ export default function ClientNotesForm(props) {
                     <button onClick={saveToGlobal}>Save Note!</button>
                 </form>
             </div>
-            }
         </div>
     )
 }

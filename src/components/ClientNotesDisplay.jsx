@@ -1,5 +1,6 @@
 import { useMedicalData } from "../contexts/ClientMedicalContext"
 import { useState, useEffect } from "react"
+import ClientNotesForm from "./ClientNotesForm"
 
 export default function ClientNotesDisplay(props) {
 
@@ -7,6 +8,11 @@ export default function ClientNotesDisplay(props) {
 
     // Local state
     const [localForm, setLocalForm] = useState({})
+    const [toggleEditNote, setToggleEditNote] = useState({})
+
+    function toggleEdit() {
+        setToggleEditNote(!toggleEditNote)
+    }
 
     // Custom hook read only access to global state
     const globalFormData = useMedicalData()
@@ -30,6 +36,8 @@ export default function ClientNotesDisplay(props) {
                 <div>
                     <p>{new Date(notes.dateCreatedAt).toLocaleDateString()}</p>
                     <p>{notes.content}</p>
+                    <button onClick={toggleEdit}>Edit Note</button>
+                    {toggleEditNote && <ClientNotesForm id={id} noteId={notes.id} />}
                 </div>
             )
         })}

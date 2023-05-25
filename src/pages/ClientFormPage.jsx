@@ -14,6 +14,7 @@ export default function ClientDisplayById() {
     const [formDisplay, setFormDisplay] = useState(false)
     const [notesDisplay, setNotesDisplay] = useState(false)
     const [localForm, setLocalForm] = useState({})
+    const [NotesFormDisplay, setNotesFormDisplay] = useState(false)
 
     useEffect(() => {
         setLocalForm(globalFormData.find(form => {
@@ -28,6 +29,10 @@ export default function ClientDisplayById() {
 
     function toggleNotesDisplay() {
         setNotesDisplay(!notesDisplay)
+    }
+
+    function toggleNotesFormDisplay() {
+        setNotesFormDisplay(!NotesFormDisplay)
     }
 
     function ClientInfoRender() {
@@ -45,7 +50,8 @@ export default function ClientDisplayById() {
             <div>
                 <h1>Client Notes</h1>
                 <ClientNotesDisplay id={id} />
-                <ClientNotesForm id={id} />
+                <button onClick={toggleNotesFormDisplay}>Create new note</button>
+                {NotesFormDisplay && <ClientNotesForm id={id} />}
                 <button onClick={toggleNotesDisplay}>Go back</button>
             </div>
         )
