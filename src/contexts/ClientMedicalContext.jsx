@@ -10,7 +10,7 @@ const initialMedicalData = [
         gender: "",
         notes: [{
             id: 1,
-            createdAt: "",
+            dateCreatedAt: "",
             content: ""
         }]
     }
@@ -35,19 +35,21 @@ const medicalReducer = (previousState, instructions) => {
 
             return stateEditable
         
-        case "create-form":
+        case "create-note":
             let clientIndex = stateEditable.findIndex(globalClient => {
                 return globalClient.id === instructions.client.id 
             })
-            let newNote = instructions.newNote
-            stateEditable[clientIndex] = instructions.client
-            stateEditable[clientIndex].notes.push(newNote)
-
+            let newNote = {...instructions.newNote}
+            let tempClient = {...instructions.client}
+            let tempNotes = [...tempClient.notes]
+            tempNotes.push(newNote)
+            tempClient.notes = tempNotes
+            stateEditable[clientIndex] = tempClient
             return stateEditable
 
             
-        case "update":
-            console.log("TODO - Update existing medical form and update state")
+        case "update-note":
+            console.log("TODO - Update existing note and update state")
             break
         
         case "delete":

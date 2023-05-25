@@ -34,7 +34,7 @@ export default function ClientNotesForm(props) {
             dateCreatedAt: localDateCreated
         }
 
-        globalMedicalDispatch({type:"create-form", client: localClient, newNote: tempNewNote})
+        globalMedicalDispatch({type:"create-note", client: localClient, newNote: tempNewNote})
     }
 
     return (

@@ -1,15 +1,26 @@
 import { useParams } from "react-router-dom"
 import { ClientInfo } from "../components/ClientMedicalDisplay"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import ClientNotesDisplay from "../components/ClientNotesDisplay"
 import ClientNotesForm from "../components/ClientNotesForm"
+import { useMedicalData } from "../contexts/ClientMedicalContext"
 
 export default function ClientDisplayById() {
 
     const {id} = useParams()
 
+    const globalFormData = useMedicalData();
+
     const [formDisplay, setFormDisplay] = useState(false)
     const [notesDisplay, setNotesDisplay] = useState(false)
+    const [localForm, setLocalForm] = useState({})
+
+    useEffect(() => {
+        setLocalForm(globalFormData.find(form => {
+            // eslint-disable-next-line
+            return form.id == id
+        }))
+    }, [globalFormData, id])
 
     function toggleFormDisplay() {
         setFormDisplay(!formDisplay)
@@ -42,6 +53,12 @@ export default function ClientDisplayById() {
 
     return(
         <div>
+            {!localForm ? 
+                <div>
+                    <h1>No Client found</h1>
+                </div>
+            :
+            <div>
             {!formDisplay && !notesDisplay &&
                 <div>
                     <h1>Client Medical Form</h1>
@@ -54,6 +71,8 @@ export default function ClientDisplayById() {
             {notesDisplay && ClientNoteRender()}
             {formDisplay && ClientInfoRender()}
         </div>
+        </div>
+        }
         </div>
     )
 }
