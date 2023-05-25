@@ -4,6 +4,7 @@ import { useMedicalData, useMedicalDispatch } from "../contexts/ClientMedicalCon
 export default function ClientNotesForm(props) {
 
     const {id} = props
+    const noteId = 2
 
     // Read data custom hook defined
     const globalMedicalData = useMedicalData()
@@ -15,21 +16,29 @@ export default function ClientNotesForm(props) {
 
     const [localContent, setLocalContent] = useState("")
     const [localDateCreated, setLocalDateCreated] = useState(Date.now())
+    const [showNoteForm, setShowNoteForm] = useState(false)
 
     const handleContentChange = (event) => {
         setLocalContent(event.target.value)
     }
 
+    const toggleShowForm = () => {
+        setShowNoteForm(!showNoteForm)
+    }
+
     useEffect(() => {
+
         setLocalClient(globalMedicalData.find(form => {
             // eslint-disable-next-line
             return form.id == id
         }))
     }, [globalMedicalData, id])
 
+
     const saveToGlobal = () => {
+        toggleShowForm()
         let tempNewNote = {
-            id: localClient.notes.length + 4,
+            id: localClient.notes.length + 1,
             content: localContent,
             dateCreatedAt: localDateCreated
         }
@@ -39,11 +48,19 @@ export default function ClientNotesForm(props) {
 
     return (
         <div>
-            <form>
-                <label>Content:</label>
-                <input type="text" value={localContent} onChange={handleContentChange} />
-            </form>
-            <button onClick={saveToGlobal}>Save Note!</button>
+            {!showNoteForm ?
+            <div>
+                <button onClick={toggleShowForm}>Create new note</button>
+            </div>
+            :
+            <div>
+                <form>
+                    <label>Content:</label>
+                    <input type="text" value={localContent} onChange={handleContentChange} />
+                    <button onClick={saveToGlobal}>Save Note!</button>
+                </form>
+            </div>
+            }
         </div>
     )
 }

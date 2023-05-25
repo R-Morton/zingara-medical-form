@@ -28,8 +28,8 @@ export default function ClientNotesDisplay(props) {
         {localForm.notes.map(notes => {
             return(
                 <div>
-                    <p>{new Date(localForm.dateCreatedAt).toLocaleDateString()}</p>
-                    <p>{localForm.notes.content}</p>
+                    <p>{new Date(notes.dateCreatedAt).toLocaleDateString()}</p>
+                    <p>{notes.content}</p>
                 </div>
             )
         })}
