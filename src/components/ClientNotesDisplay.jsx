@@ -33,7 +33,7 @@ export default function ClientNotesDisplay(props) {
         <p>{localForm.name}</p>
         {localForm.notes.map(notes => {
             return(
-                <div>
+                <div key={notes.id}>
                     <p>{new Date(notes.dateCreatedAt).toLocaleDateString()}</p>
                     <p>{notes.content}</p>
                     <button onClick={toggleEdit}>Edit Note</button>

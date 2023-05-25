@@ -44,7 +44,6 @@ export default function ClientNotesForm(props) {
                 // eslint-disable-next-line
                 return note.id == noteId
             })
-            console.log(tempNote)
             if (tempNote) {
                 setLocalContent(tempNote.content)
                 setLocalDateCreated(tempNote.dateCreatedAt)
