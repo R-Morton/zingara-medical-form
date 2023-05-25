@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom"
 import { ClientInfo } from "../components/ClientMedicalDisplay"
 import { useState } from "react"
 import ClientNotesDisplay from "../components/ClientNotesDisplay"
+import ClientNotesForm from "../components/ClientNotesForm"
 
 export default function ClientDisplayById() {
 
@@ -33,6 +34,7 @@ export default function ClientDisplayById() {
             <div>
                 <h1>Client Notes</h1>
                 <ClientNotesDisplay id={id} />
+                <ClientNotesForm id={id} />
                 <button onClick={toggleNotesDisplay}>Go back</button>
             </div>
         )

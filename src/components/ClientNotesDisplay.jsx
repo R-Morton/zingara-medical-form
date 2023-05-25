@@ -19,6 +19,7 @@ export default function ClientNotesDisplay(props) {
         }))
     }, [globalFormData, id])
 
+
     return(
         <div>
             {localForm.notes ?
@@ -29,11 +30,10 @@ export default function ClientNotesDisplay(props) {
                 <p>{notes.content}</p>
             )
         })}
-        <p>{localForm.notes[0].content}</p>
         </div>
             :
             <div>
-                <h1>No notes found!</h1>    
+                <h1>No notes found!</h1>  
             </div>
             }
         </div>

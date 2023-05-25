@@ -57,11 +57,7 @@ export function MedicalForm(props) {
 			email: localEmail,
 			age: localAge,
 			gender: localGender,
-            notes: [{
-                id: 1,
-                content: "",
-                createdAt: ""
-            }]
+            notes: []
 		}
 
 		if (id){

@@ -34,6 +34,17 @@ const medicalReducer = (previousState, instructions) => {
             stateEditable.push(newForm)
 
             return stateEditable
+        
+        case "create-form":
+            let clientIndex = stateEditable.findIndex(globalClient => {
+                return globalClient.id === instructions.client.id 
+            })
+            let newNote = instructions.newNote
+            stateEditable[clientIndex] = instructions.client
+            stateEditable[clientIndex].notes.push(newNote)
+
+            return stateEditable
+
             
         case "update":
             console.log("TODO - Update existing medical form and update state")
