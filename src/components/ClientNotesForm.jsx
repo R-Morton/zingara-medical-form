@@ -54,14 +54,16 @@ export default function ClientNotesForm(props) {
 
 
     const saveToGlobal = () => {
-        toggleShowForm()
         let tempNewNote = {
-            id: localClient.notes.length + 1,
+            id: noteId || localClient.notes.length + 1,
             content: localContent,
             dateCreatedAt: localDateCreated
         }
-
-        globalMedicalDispatch({type:"create-note", client: localClient, newNote: tempNewNote})
+        if (noteId) {
+            globalMedicalDispatch({type:"update-note", client: localClient, updatedNote: tempNewNote})
+        } else {
+            globalMedicalDispatch({type:"create-note", client: localClient, newNote: tempNewNote})
+        }
     }
 
     return (
@@ -70,8 +72,8 @@ export default function ClientNotesForm(props) {
                 <form>
                     <label>Content:</label>
                     <input type="text" value={localContent} onChange={handleContentChange} />
-                    <button onClick={saveToGlobal}>Save Note!</button>
                 </form>
+                    <button onClick={saveToGlobal}>Save Note!</button>
             </div>
         </div>
     )

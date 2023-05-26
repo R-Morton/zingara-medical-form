@@ -27,15 +27,15 @@ const medicalReducer = (previousState, instructions) => {
             // Whatever is returned is the new state data
             return stateEditable
         
-        case "create":
+        case "create":{
             console.log("TODO - Create new client medical form and add to state")
             let newForm = instructions.newForm
 
             stateEditable.push(newForm)
 
-            return stateEditable
+            return stateEditable}
         
-        case "create-note":
+        case "create-note":{
             let clientIndex = stateEditable.findIndex(globalClient => {
                 return globalClient.id === instructions.client.id 
             })
@@ -45,12 +45,24 @@ const medicalReducer = (previousState, instructions) => {
             tempNotes.push(newNote)
             tempClient.notes = tempNotes
             stateEditable[clientIndex] = tempClient
-            return stateEditable
+            return stateEditable}
 
             
-        case "update-note":
+        case "update-note":{
             console.log("TODO - Update existing note and update state")
-            break
+            let ClientIndex = stateEditable.findIndex(globalClient => {
+                return globalClient.id === instructions.client.id 
+            })
+            let updatedNote = {...instructions.updatedNote}
+            let TempClient = {...instructions.client}
+            let TempNotes = [...TempClient.notes]
+            let noteIndex = TempNotes.findIndex(notes => {
+                return notes.id === updatedNote.id
+            })
+            TempNotes[noteIndex] = updatedNote
+            TempClient.notes = TempNotes
+            stateEditable[ClientIndex] = TempClient
+            return stateEditable}
         
         case "delete":
             console.log("TODO - Delete existing medical form and update state")

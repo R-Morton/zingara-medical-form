@@ -10,9 +10,12 @@ export default function ClientNotesDisplay(props) {
     const [localForm, setLocalForm] = useState({})
     const [toggleEditNote, setToggleEditNote] = useState({})
 
-    function toggleEdit() {
-        setToggleEditNote(!toggleEditNote)
-    }
+    function toggleEdit(noteId) {
+        setToggleEditNote((prevState) => ({
+          ...prevState,
+          [noteId]: !prevState[noteId],
+        }));
+      }
 
     // Custom hook read only access to global state
     const globalFormData = useMedicalData()
@@ -36,8 +39,8 @@ export default function ClientNotesDisplay(props) {
                 <div key={notes.id}>
                     <p>{new Date(notes.dateCreatedAt).toLocaleDateString()}</p>
                     <p>{notes.content}</p>
-                    <button onClick={toggleEdit}>Edit Note</button>
-                    {toggleEditNote && <ClientNotesForm id={id} noteId={notes.id} />}
+                    <button onClick={() => toggleEdit(notes.id)}>Edit Note</button>
+                    {toggleEditNote[notes.id] && <ClientNotesForm id={id} noteId={notes.id} />}
                 </div>
             )
         })}
