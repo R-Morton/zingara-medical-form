@@ -25,7 +25,6 @@ export default function ClientNotesForm(props) {
     const [localContent, setLocalContent] = useState("")
     const [localDateCreated, setLocalDateCreated] = useState(Date.now())
 
-    const [deleteNote, setDeleteNote] = useState(false)
 
     // Front end validations to be done here
     const handleContentChange = (event) => {
@@ -81,13 +80,21 @@ export default function ClientNotesForm(props) {
         }
     }
 
+    const deleteNoteGlobal = () => {
+        let noteForDeletion = localClientNotes.find((note) => {
+            return note.id === noteId
+        })
+        globalMedicalDispatch({type:"delete-note", note: noteForDeletion, client: localClient})
+    }
+
     return (
         <div>
             <div>
                 <form>
                     <label>Content:</label>
-                    <input type="text" value={localContent} onChange={handleContentChange} />
+                    <textarea type="text" class="content-input" value={localContent} onChange={handleContentChange} />
                 </form>
+                    {noteId && <button onClick={deleteNoteGlobal}>Delete Note</button>}
                     <button onClick={saveToGlobal}>Save Note!</button>
             </div>
         </div>

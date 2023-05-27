@@ -8,4 +8,4 @@
 - [X] Configure routes so form and display are on separate pages
 - [ ] Add search bar to search for forms in display
 - [X] Add client notes component that allows user to write and edit notes about the client sessions
-- [ ] Add delete client and notes functionality
+- [X] Add delete client and notes functionality

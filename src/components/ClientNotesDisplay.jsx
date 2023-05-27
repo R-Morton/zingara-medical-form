@@ -1,6 +1,7 @@
 import { useMedicalData } from "../contexts/ClientMedicalContext"
 import { useState, useEffect } from "react"
 import ClientNotesForm from "./ClientNotesForm"
+import "./form.css"
 
 export default function ClientNotesDisplay(props) {
 
@@ -36,7 +37,7 @@ export default function ClientNotesDisplay(props) {
         <h3>{localForm.name}</h3>
         {localForm.notes.map(notes => {
             return(
-                <div key={notes.id}>
+                <div key={notes.id} class="notes">
                     <p>Note Created: {new Date(notes.dateCreatedAt).toLocaleDateString()}</p>
                     <p>{notes.content}</p>
                     {!toggleEditNote[notes.id] && <button onClick={() => toggleEdit(notes.id)}>Edit Note</button>}

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useMedicalData, useMedicalDispatch } from "../contexts/ClientMedicalContext";
 
 
@@ -16,28 +16,24 @@ export function MedicalForm(props) {
     // Set up the form's local state
     const [localName, setLocalName] = useState("");
     const [localEmail, setLocalEmail] = useState("");
-    const [localGender, setLocalGender] = useState("")
+    const [localGender, setLocalGender] = useState("male")
     const [localAge, setLocalAge] = useState("")
 
     const [index, setIndex] = useState(0)
 
     const handleChangeEmail = (event) => {
-        // Do front-end validations here.
         setLocalEmail(event.target.value);
     }
 
     const handleChangeUsername = (event) => {
-        // Do front-end validations here.
         setLocalName(event.target.value);
     }
 
     const handleChangeGender = (event) => {
-        // Do front-end validations here.
         setLocalGender(event.target.value);
     }
 
     const handleChangeAge = (event) => {
-        // Do front-end validations here.
         setLocalAge(event.target.value);
     }
 
@@ -50,7 +46,7 @@ export function MedicalForm(props) {
     }
 
     const saveToGlobal = () => {
-
+        // Creates a new form data, either with id passed in as a prop for updating or a new id.
 		let tempNewForm = {
 			id: id || globalMedicalData.length + 1,
 			name: localName,
@@ -60,10 +56,12 @@ export function MedicalForm(props) {
             notes: []
 		}
 
+        // If the id is passed in, we are updating the state of this client
 		if (id){
 			globalMedicalDispatch({type:"update", updatedForm: tempNewForm})
-		} else {
+		} else { // Else we are creating a new form
 			globalMedicalDispatch({type:"create", newForm: tempNewForm})
+            handleNext()
 		}
 		
 
@@ -87,25 +85,36 @@ export function MedicalForm(props) {
     function form2() {
         return(
             <div>
-            <form onSubmit={saveToGlobal}>
+            <form>
                 <label>Age:</label>
                 <input type="text" value={localAge} onChange={handleChangeAge} />
                 <label>Gender:</label>
                 <select value={localGender} onChange={handleChangeGender}>
                     <option value="male">Male</option>
-                    <option vale="female">Female</option>
+                    <option value="female">Female</option>
                 </select>
-                <button type="submit" >Submit</button>
             </form>
             <button onClick={handlePrevious}>Previous</button>
+            <button onClick={saveToGlobal} >Submit</button>
         </div>
         )
     }
+
+    function completePage() {
+        return(
+            <div>
+                <h3>Thank you for completing the form</h3>
+            </div>
+        )
+    }
+
+
 
     return (
         <div>
             {index === 0 && form1()}
             {index === 1 && form2()}
+            {index === 2 && completePage()}
         </div>
     );
 }

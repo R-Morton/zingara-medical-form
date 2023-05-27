@@ -1,0 +1,14 @@
+.notes {
+    margin-bottom: 50px;
+    border: solid;
+}
+
+.notes, button {
+    margin-bottom: 20px;
+}
+
+.content-input {
+    height: 100px;
+    width : 200px;
+    overflow: hidden;
+}
