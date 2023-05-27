@@ -33,14 +33,14 @@ export default function ClientNotesDisplay(props) {
         <div>
             {localForm.notes ?
         <div>
-        <p>{localForm.name}</p>
+        <h3>{localForm.name}</h3>
         {localForm.notes.map(notes => {
             return(
                 <div key={notes.id}>
-                    <p>{new Date(notes.dateCreatedAt).toLocaleDateString()}</p>
+                    <p>Note Created: {new Date(notes.dateCreatedAt).toLocaleDateString()}</p>
                     <p>{notes.content}</p>
-                    <button onClick={() => toggleEdit(notes.id)}>Edit Note</button>
-                    {toggleEditNote[notes.id] && <ClientNotesForm id={id} noteId={notes.id} />}
+                    {!toggleEditNote[notes.id] && <button onClick={() => toggleEdit(notes.id)}>Edit Note</button>}
+                    {toggleEditNote[notes.id] && <ClientNotesForm id={id} noteId={notes.id} toggleEdit={toggleEdit} />}
                 </div>
             )
         })}

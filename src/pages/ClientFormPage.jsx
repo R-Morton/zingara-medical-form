@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom"
+import { Link, useParams } from "react-router-dom"
 import { ClientInfo } from "../components/ClientMedicalDisplay"
 import { useState, useEffect } from "react"
 import ClientNotesDisplay from "../components/ClientNotesDisplay"
@@ -50,9 +50,9 @@ export default function ClientDisplayById() {
             <div>
                 <h1>Client Notes</h1>
                 <ClientNotesDisplay id={id} />
-                <button onClick={toggleNotesFormDisplay}>Create new note</button>
-                {NotesFormDisplay && <ClientNotesForm id={id} />}
-                <button onClick={toggleNotesDisplay}>Go back</button>
+                {!NotesFormDisplay && <button onClick={toggleNotesFormDisplay}>Create new note</button>}
+                {NotesFormDisplay && <ClientNotesForm id={id} toggleForm={toggleNotesFormDisplay} />}
+                <br/><button onClick={toggleNotesDisplay}>Go back</button>
             </div>
         )
     }
@@ -67,10 +67,12 @@ export default function ClientDisplayById() {
             <div>
             {!formDisplay && !notesDisplay &&
                 <div>
-                    <h1>Client Medical Form</h1>
-                    <button onClick={toggleFormDisplay}>Switch</button>
-                    <h1>Client Notes</h1>
-                    <button onClick={toggleNotesDisplay}>Switch</button>
+                    <h2>Client: {localForm.name}</h2>
+                    <h4>Client Medical Form</h4>
+                    <button onClick={toggleFormDisplay}>Show</button>
+                    <h4>Client Notes</h4>
+                    <button onClick={toggleNotesDisplay}>Show</button>
+                    <br/><Link to={"/client"}><button>Go Back</button></Link>
                 </div>
             }
         <div>

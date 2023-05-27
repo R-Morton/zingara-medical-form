@@ -19,7 +19,7 @@ export default function DisplayPage(props) {
                 {globalFormData.map(form => {
                     return(
                         <div key={form.id}>
-                            <Link to={`/client/${form.id}`}> {form.name} </Link>
+                            <Link to={`/client/${form.id}`}>{form.name}</Link>
                         </div>
                     )
                 })}
