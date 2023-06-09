@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useMedicalData, useMedicalDispatch } from "../contexts/ClientMedicalContext";
-
+import "../stylesheets/medicalForm.css"
 
 
 export function MedicalForm(props) {
@@ -22,7 +22,8 @@ export function MedicalForm(props) {
     const [therapist, setTherapist] = useState("")
     const [dateOfBirth, setDateOfBirth] = useState("")
     const [height, setHeight] = useState("cm")
-    const [address, setAddress] = useState("")
+    const [address1, setAddress1] = useState("")
+    const [address2, setAddress2] = useState("")
     const [occupation, setOccupation] = useState("")
     const [eContactName, setEContactName] = useState("")
     const [eContactNumber, setEContactNumber] = useState("")
@@ -37,8 +38,28 @@ export function MedicalForm(props) {
         setTherapist(event.target.value)
     }
 
+    const handleChangeDOB = (event) => {
+        setDateOfBirth(event.target.value)
+    }
+
     const handleChangeEmail = (event) => {
         setLocalEmail(event.target.value);
+    }
+
+    const handleChangeHeight = (event) => {
+        setHeight(event.target.value)
+    }
+
+    const handleChangeAddress1 = (event) => {
+        setAddress1(event.target.value)
+    }
+
+    const handleChangeAddress2 = (event) => {
+        setAddress1(event.target.value)
+    }
+
+    const handleChangeOccupation = (event) => {
+        setOccupation(event.target.value)
     }
 
     const handleChangeUsername = (event) => {
@@ -47,6 +68,14 @@ export function MedicalForm(props) {
 
     const handleChangeGender = (event) => {
         setLocalGender(event.target.value);
+    }
+
+    const handleEContactName = (event) => {
+        setEContactName(event.target.value)
+    }
+
+    const handleEContactNumber = (event) => {
+        setEContactNumber(event.target.value)
     }
 
     const handleChangeAge = (event) => {
@@ -85,7 +114,7 @@ export function MedicalForm(props) {
     
     function form1() {
         return(
-            <div>
+            <div class="main-client-form">
                 <h1>CLIENT INTAKE FORM</h1>
             <form>
                 <label>DATE OF TREATMENT:</label>
@@ -94,13 +123,31 @@ export function MedicalForm(props) {
                 <select value={therapist} onChange={handleChangeTherapist}>
                     <option value={"AMY"}>AMY</option>
                 </select>
-
-                <h3>CLIENT DETAILS</h3>
+            </form>
+            <h3>CLIENT DETAILS</h3>
+            <form>
                 <label>Name:</label>
                 <input type="text" value={localName} onChange={handleChangeUsername} />
+                <label>DOB:</label>
+                <input type="date" value={dateOfBirth} onChange={handleChangeDOB}/>
+                <label>GENDER:</label>
+                <input type="text" value={localGender} onChange={handleChangeGender} />
+                <label>HEIGHT:</label>
+                <input type="text" value={height} onChange={handleChangeHeight} />
                 <label>Email:</label>
                 <input type="text" value={localEmail} onChange={handleChangeEmail} />
+                <label>ADDRESS:</label>
+                <input type="text" value={address1} onChange={handleChangeAddress1} />
+                <input type="text" value={address1} onChange={handleChangeAddress2} />
+                <label>EMAIL:</label>
+                <input type="text" value={localEmail} onChange={handleChangeEmail} />
+                <label>OCCUPATION:</label>
+                <input type="text" value={occupation} onChange={handleChangeOccupation} />
+                <label>EMERGENCY CONTACT:</label>
+                <input type="text" value={eContactName} onChange={handleEContactName} />
+                <input type="text" value={eContactNumber} onChange={handleEContactNumber} />
                 
+
             </form>
             <button onClick={handleNext} >Next</button>
         </div>
