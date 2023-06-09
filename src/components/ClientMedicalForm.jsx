@@ -18,8 +18,24 @@ export function MedicalForm(props) {
     const [localEmail, setLocalEmail] = useState("");
     const [localGender, setLocalGender] = useState("male")
     const [localAge, setLocalAge] = useState("")
+    const [treatmentDate, setTreatmentDate] = useState(Date.now())
+    const [therapist, setTherapist] = useState("")
+    const [dateOfBirth, setDateOfBirth] = useState("")
+    const [height, setHeight] = useState("cm")
+    const [address, setAddress] = useState("")
+    const [occupation, setOccupation] = useState("")
+    const [eContactName, setEContactName] = useState("")
+    const [eContactNumber, setEContactNumber] = useState("")
 
     const [index, setIndex] = useState(0)
+
+    const handleChangeTreatmentDate = (event) => {
+        setTreatmentDate(event.target.value);
+    }
+
+    const handleChangeTherapist = (event) => {
+        setTherapist(event.target.value)
+    }
 
     const handleChangeEmail = (event) => {
         setLocalEmail(event.target.value);
@@ -70,7 +86,16 @@ export function MedicalForm(props) {
     function form1() {
         return(
             <div>
+                <h1>CLIENT INTAKE FORM</h1>
             <form>
+                <label>DATE OF TREATMENT:</label>
+                <input type="date" value={treatmentDate} onChange={handleChangeTreatmentDate} />
+                <label>MASSAGE THERAPIST:</label>
+                <select value={therapist} onChange={handleChangeTherapist}>
+                    <option value={"AMY"}>AMY</option>
+                </select>
+
+                <h3>CLIENT DETAILS</h3>
                 <label>Name:</label>
                 <input type="text" value={localName} onChange={handleChangeUsername} />
                 <label>Email:</label>
