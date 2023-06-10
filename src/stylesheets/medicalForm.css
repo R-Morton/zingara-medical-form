@@ -1,3 +1,101 @@
+h1 {
+    font-size: 150%;
+    text-align: center;
+    border-bottom: solid;
+}
+
+h3 {
+    margin: 2% 0 2% 0;
+    font-weight: lighter;
+}
+
 .main-client-form {
     margin: 8%;
+    margin-top: 20%;
 }
+
+.client-details-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.treatment-block {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.treatment-block input, .treatment-block select {
+    margin: auto;
+    height: 3.5vh
+}
+
+.treatment-block label {
+    width: 30%;
+    padding: 0;
+}
+
+.treatment-block input, .treatment-block select {
+    width: 60%;
+}
+
+input, select {
+    margin-right: 1vw;
+    height: 3vh;
+}
+
+select {
+    height: 3.5vh;
+}
+
+label {
+    padding-bottom: 1.5vh;
+    margin-right: 1vw;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.dob-height-block input, .name-gender-block input {
+    width: 100%;
+}
+
+#email, #occupation {
+    width: 61%;
+}
+
+#address1, #address2 {
+    width: 70.0%;
+}
+
+#addressblock {
+    margin-top: 1vh;
+}
+
+.dob-height-block {
+    display: flex;
+    width: 40%;
+}
+
+.name-gender-block {
+    display: flex;
+    width: 60%;
+}
+
+.e-contact-block input {
+    width: 70%;
+}
+
+.block2 {
+    display: flex;
+    justify-content: end;
+    margin-bottom: 1vh;
+
+}
+
+.block {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1vh;
+}
+

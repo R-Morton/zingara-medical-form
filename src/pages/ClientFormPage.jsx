@@ -11,11 +11,13 @@ export default function ClientDisplayById() {
 
     const globalFormData = useMedicalData();
 
+    // local state declared here
     const [formDisplay, setFormDisplay] = useState(false)
     const [notesDisplay, setNotesDisplay] = useState(false)
     const [localForm, setLocalForm] = useState({})
     const [NotesFormDisplay, setNotesFormDisplay] = useState(false)
 
+    // Finding the form matching the id passed in as parameter and setting local state
     useEffect(() => {
         setLocalForm(globalFormData.find(form => {
             // eslint-disable-next-line
@@ -35,6 +37,7 @@ export default function ClientDisplayById() {
         setNotesFormDisplay(!NotesFormDisplay)
     }
 
+    // Displays the results of the medical form when button is clicked. Passing id as prop
     function ClientInfoRender() {
         return(
             <div>

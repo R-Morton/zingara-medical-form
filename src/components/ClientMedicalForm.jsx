@@ -16,7 +16,7 @@ export function MedicalForm(props) {
     // Set up the form's local state
     const [localName, setLocalName] = useState("");
     const [localEmail, setLocalEmail] = useState("");
-    const [localGender, setLocalGender] = useState("male")
+    const [localGender, setLocalGender] = useState("")
     const [localAge, setLocalAge] = useState("")
     const [treatmentDate, setTreatmentDate] = useState(Date.now())
     const [therapist, setTherapist] = useState("")
@@ -116,39 +116,69 @@ export function MedicalForm(props) {
         return(
             <div class="main-client-form">
                 <h1>CLIENT INTAKE FORM</h1>
-            <form>
+            <div className="treatment-block">
+                <div className="block">
                 <label>DATE OF TREATMENT:</label>
                 <input type="date" value={treatmentDate} onChange={handleChangeTreatmentDate} />
+                </div>
+                <div className="block">
                 <label>MASSAGE THERAPIST:</label>
                 <select value={therapist} onChange={handleChangeTherapist}>
                     <option value={"AMY"}>AMY</option>
                 </select>
-            </form>
+                </div>
+            </div>
             <h3>CLIENT DETAILS</h3>
-            <form>
-                <label>Name:</label>
-                <input type="text" value={localName} onChange={handleChangeUsername} />
-                <label>DOB:</label>
-                <input type="date" value={dateOfBirth} onChange={handleChangeDOB}/>
-                <label>GENDER:</label>
-                <input type="text" value={localGender} onChange={handleChangeGender} />
-                <label>HEIGHT:</label>
-                <input type="text" value={height} onChange={handleChangeHeight} />
-                <label>Email:</label>
-                <input type="text" value={localEmail} onChange={handleChangeEmail} />
-                <label>ADDRESS:</label>
-                <input type="text" value={address1} onChange={handleChangeAddress1} />
-                <input type="text" value={address1} onChange={handleChangeAddress2} />
-                <label>EMAIL:</label>
-                <input type="text" value={localEmail} onChange={handleChangeEmail} />
-                <label>OCCUPATION:</label>
-                <input type="text" value={occupation} onChange={handleChangeOccupation} />
-                <label>EMERGENCY CONTACT:</label>
-                <input type="text" value={eContactName} onChange={handleEContactName} />
-                <input type="text" value={eContactNumber} onChange={handleEContactNumber} />
+            <div class="client-details-form">
+                <div class="block">
+                    <div className="name-gender-block">
+                        <label>NAME:</label>
+                        <input id="name" type="text" value={localName} onChange={handleChangeUsername} />
+                    </div>
+                    <div className="dob-height-block">
+                    <label>DOB:</label>
+                    <input id="dob" type="date" value={dateOfBirth} onChange={handleChangeDOB}/>
+                    </div>
+                </div>
+                <div class="block">
+                <div className="name-gender-block">
+                    <label>GENDER:</label>
+                    <input id="gender" type="text" value={localGender} onChange={handleChangeGender} />
+                    </div>
+                    <div className="dob-height-block">
+                    <label>HEIGHT:</label>
+                    <input id="height" type="text" value={height} onChange={handleChangeHeight} />
+                    </div>
+                </div>
+                <div className="block" id="addressblock">
+                    <label>ADDRESS:</label>
+                    <input id="address1" type="text" value={address1} onChange={handleChangeAddress1} />
+                </div>
+                    <div className="block2">
+                    <input id="address2" type="text" value={address2} onChange={handleChangeAddress2} />
+                </div>
+                <div className="block">
+                    <label>EMAIL:</label>
+                    <input id="email" type="text" value={localEmail} onChange={handleChangeEmail} />
+                </div>
+                <div className="block">
+                    <label>OCCUPATION:</label>
+                    <input id="occupation" type="text" value={occupation} onChange={handleChangeOccupation} />
+                </div>
+                <h3>EMERGENCY CONTACT</h3>
+                <div className="e-contact-block">
+                <div className="block">
+                    <label>NAME:</label>
+                    <input type="text" value={eContactName} onChange={handleEContactName} />
+                </div>
+                <div className="block">
+                    <label>NUMBER:</label>
+                    <input type="text" value={eContactNumber} onChange={handleEContactNumber} />
+                </div>
+                </div>
                 
 
-            </form>
+            </div>
             <button onClick={handleNext} >Next</button>
         </div>
         )
