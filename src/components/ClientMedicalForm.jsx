@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { useMedicalData, useMedicalDispatch } from "../contexts/ClientMedicalContext";
 import "../stylesheets/medicalForm.css"
+import Header from "./medical_form/header";
+import Footer from "./medical_form/footer";
 
 
 export function MedicalForm(props) {
@@ -114,6 +116,10 @@ export function MedicalForm(props) {
     
     function form1() {
         return(
+            <div className="main">
+                <header>
+                    <Header></Header>
+                </header>
             <div class="main-client-form">
                 <h1>CLIENT INTAKE FORM</h1>
             <div className="treatment-block">
@@ -165,21 +171,20 @@ export function MedicalForm(props) {
                     <label>OCCUPATION:</label>
                     <input id="occupation" type="text" value={occupation} onChange={handleChangeOccupation} />
                 </div>
-                <h3>EMERGENCY CONTACT</h3>
-                <div className="e-contact-block">
-                <div className="block">
-                    <label>NAME:</label>
-                    <input type="text" value={eContactName} onChange={handleEContactName} />
-                </div>
-                <div className="block">
-                    <label>NUMBER:</label>
-                    <input type="text" value={eContactNumber} onChange={handleEContactNumber} />
-                </div>
-                </div>
-                
 
+                <div className="e-contact-block">
+                    <label>EMERGENCY CONTACT:</label>
+                    <div className="e-contact-input">
+                    <input id="e-contact-name" type="text" value={eContactName} onChange={handleEContactName} />
+                    <input type="text" value={eContactNumber} onChange={handleEContactNumber} />
+                    </div>
+                </div>
             </div>
             <button onClick={handleNext} >Next</button>
+        </div>
+            <footer>
+                <Footer></Footer>
+            </footer>
         </div>
         )
     }

@@ -1,7 +1,8 @@
-h1 {
+.main-client-form h1 {
     font-size: 150%;
     text-align: center;
     border-bottom: solid;
+    margin-top: 0;
 }
 
 h3 {
@@ -10,8 +11,7 @@ h3 {
 }
 
 .main-client-form {
-    margin: 8%;
-    margin-top: 20%;
+    margin: 0 8%;
 }
 
 .client-details-form {
@@ -72,6 +72,28 @@ label {
     margin-top: 1vh;
 }
 
+.e-contact-block {
+    display: flex;
+}
+
+.e-contact-block label {
+    width: 39%;
+}
+
+.e-contact-input {
+    display: flex;
+    width: 61vw;
+}
+
+#e-contact-name {
+    width: 50%;
+}
+
+.e-contact-input input {
+    width: 100%;
+}
+
+
 .dob-height-block {
     display: flex;
     width: 40%;
@@ -80,10 +102,6 @@ label {
 .name-gender-block {
     display: flex;
     width: 60%;
-}
-
-.e-contact-block input {
-    width: 70%;
 }
 
 .block2 {
