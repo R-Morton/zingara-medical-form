@@ -1,17 +1,31 @@
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
+
 .main-client-form h1 {
     font-size: 150%;
     text-align: center;
     border-bottom: solid;
     margin-top: 0;
+    color: #4fb1a1;
 }
 
-h3 {
-    margin: 2% 0 2% 0;
+.main-client-form h3 {
+    margin: 5% 3%;
     font-weight: lighter;
+    color: #4fb1a1;
 }
 
 .main-client-form {
-    margin: 0 8%;
+    margin: 0 5%;
+}
+
+.treatment-block, .client-details-form {
+    margin: 0 5%;
 }
 
 .client-details-form {
@@ -26,9 +40,14 @@ h3 {
     justify-content: space-between;
 }
 
-.treatment-block input, .treatment-block select {
+.treatment-block input {
     margin: auto;
     height: 3.5vh
+}
+
+.treatment-block select {
+    margin: auto;
+    height: 4.5vh;
 }
 
 .treatment-block label {
@@ -42,18 +61,22 @@ h3 {
 
 input, select {
     margin-right: 1vw;
-    height: 3vh;
+    height: 3.5vh;
+    border-radius: 20px;
+    border: 0;
+    background-color: #afddd8;
+    padding: 5px;
 }
 
-select {
-    height: 3.5vh;
-}
 
 label {
-    padding-bottom: 1.5vh;
+    padding-bottom: 0vh;
     margin-right: 1vw;
     font-size: 15px;
     font-weight: bold;
+    display: flex;
+    align-items: center;
+    color: #4fb1a1;
 }
 
 .dob-height-block input, .name-gender-block input {
@@ -70,6 +93,7 @@ label {
 
 #addressblock {
     margin-top: 1vh;
+    margin-bottom: 0.5vh;
 }
 
 .e-contact-block {
@@ -107,13 +131,14 @@ label {
 .block2 {
     display: flex;
     justify-content: end;
-    margin-bottom: 1vh;
+    margin-bottom: 1.5vh;
+    margin-top: 0
 
 }
 
 .block {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 1vh;
+    margin-bottom: 1.5vh;
 }
 

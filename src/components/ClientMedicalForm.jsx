@@ -120,7 +120,7 @@ export function MedicalForm(props) {
                 <header>
                     <Header></Header>
                 </header>
-            <div class="main-client-form">
+            <div className="main-client-form">
                 <h1>CLIENT INTAKE FORM</h1>
             <div className="treatment-block">
                 <div className="block">
@@ -135,8 +135,8 @@ export function MedicalForm(props) {
                 </div>
             </div>
             <h3>CLIENT DETAILS</h3>
-            <div class="client-details-form">
-                <div class="block">
+            <div className="client-details-form">
+                <div className="block">
                     <div className="name-gender-block">
                         <label>NAME:</label>
                         <input id="name" type="text" value={localName} onChange={handleChangeUsername} />
@@ -146,7 +146,7 @@ export function MedicalForm(props) {
                     <input id="dob" type="date" value={dateOfBirth} onChange={handleChangeDOB}/>
                     </div>
                 </div>
-                <div class="block">
+                <div className="block">
                 <div className="name-gender-block">
                     <label>GENDER:</label>
                     <input id="gender" type="text" value={localGender} onChange={handleChangeGender} />
