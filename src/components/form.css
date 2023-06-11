@@ -12,3 +12,7 @@
     width : 200px;
     overflow: hidden;
 }
+
+.svg-bottom {
+    transform: translateY(5px);
+}
