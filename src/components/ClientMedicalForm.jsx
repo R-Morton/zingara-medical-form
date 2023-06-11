@@ -3,6 +3,7 @@ import { useMedicalData, useMedicalDispatch } from "../contexts/ClientMedicalCon
 import "../stylesheets/medicalForm.css"
 import Header from "./medical_form/header";
 import Footer from "./medical_form/footer";
+import Nav from "./medical_form/nav";
 
 
 export function MedicalForm(props) {
@@ -57,7 +58,7 @@ export function MedicalForm(props) {
     }
 
     const handleChangeAddress2 = (event) => {
-        setAddress1(event.target.value)
+        setAddress2(event.target.value)
     }
 
     const handleChangeOccupation = (event) => {
@@ -179,8 +180,8 @@ export function MedicalForm(props) {
                     <input type="text" value={eContactNumber} onChange={handleEContactNumber} />
                     </div>
                 </div>
+                <Nav index={index} handleNext={handleNext} handlePrevious={handlePrevious}></Nav>
             </div>
-            <button onClick={handleNext} >Next</button>
         </div>
             <footer>
                 <Footer></Footer>
@@ -201,8 +202,7 @@ export function MedicalForm(props) {
                     <option value="female">Female</option>
                 </select>
             </form>
-            <button onClick={handlePrevious}>Previous</button>
-            <button onClick={saveToGlobal} >Submit</button>
+            <Nav index={index} handleNext={handleNext} handlePrevious={handlePrevious}></Nav>
         </div>
         )
     }

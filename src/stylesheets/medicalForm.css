@@ -130,7 +130,7 @@ label {
 
 .block2 {
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
     margin-bottom: 1.5vh;
     margin-top: 0
 
@@ -142,3 +142,21 @@ label {
     margin-bottom: 1.5vh;
 }
 
+.nav-buttons {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 3vh;
+    height: 4vh;
+}
+
+.nav-buttons button {
+    width: 30%;
+    border-radius: 20px;
+    border: 0;
+    background-color: #f5a636;
+    color: white;
+}
+
+.hidden {
+    visibility: hidden;
+}
