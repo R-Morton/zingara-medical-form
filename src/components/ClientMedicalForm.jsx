@@ -122,7 +122,6 @@ export function MedicalForm(props) {
                     <Header></Header>
                 </header>
             <div className="main-client-form">
-                <h1>CLIENT INTAKE FORM</h1>
             <div className="treatment-block">
                 <div className="block">
                 <label>DATE OF TREATMENT:</label>
@@ -193,16 +192,56 @@ export function MedicalForm(props) {
     function form2() {
         return(
             <div>
-            <form>
-                <label>Age:</label>
-                <input type="text" value={localAge} onChange={handleChangeAge} />
-                <label>Gender:</label>
-                <select value={localGender} onChange={handleChangeGender}>
-                    <option value="male">Male</option>
-                    <option value="female">Female</option>
-                </select>
-            </form>
+                <header>
+                    <Header />
+                </header>
+            <div className="main">
+                <div className="client-history">
+                    <h3>CLIENT HISTORY</h3>
+                    <p>Please tick the following boxes</p>
+                    <div className="question">
+                        <p>Q1.</p><p>ARE YOU CURRENTLY EXPERIENCING ANY PAIN, 
+                                    DISCOMFORT, RECENT INJURIES, AND/OR SURGERY?</p>
+                    </div>
+                    <div className="answers">
+                    <div className="radio-answers">
+                        <input type="radio" value="YES" name="pain" /> <label>YES</label>
+                        <input type="radio" value="NO" name="pain" /> <label>NO</label>
+                    </div>
+                    <div className="text-answers">
+                        <p>if selected 'yes', please provide more information</p>
+                        <label>DETAILS (LOCATION/AREA, WHEN DID IT START ETC.)</label>
+                        <input type="text"></input>
+                    </div>
+                    <label>HAVE YOU SEEN A GP OR SPECIALIST?</label>
+                    <div className="radio-answers">
+                        <input type="radio" value="YES" name="gp" /> <label>YES</label>
+                        <input type="radio" value="NO" name="gp" /> <label>NO</label>
+                    </div>
+                    <div className="text-answers">
+                        <label>DETAILS</label>
+                        <input type="text"></input>
+                    </div>
+                    </div>
+                    <div className="question">
+                        <p>Q2.</p>
+                        <p>DO YOU GAVE ANY ALLERGIES, SENSITIVITES,INTOLERANCES?</p>
+                    </div>
+                    <div className="radio-answers">
+                        <input type="radio" value="YES" name="allergies" /> <label>YES</label>
+                        <input type="radio" value="NO" name="allergies" /> <label>NO</label>
+                    </div>
+                    <div className="text-answers">
+                        <p>if selected 'yes', please provide more information</p>
+                        <label>DETAILS</label>
+                        <input type="text"></input>
+                    </div>
+                </div>
             <Nav index={index} handleNext={handleNext} handlePrevious={handlePrevious}></Nav>
+            </div>
+            <footer>
+                <Footer />
+            </footer>
         </div>
         )
     }
@@ -221,7 +260,7 @@ export function MedicalForm(props) {
         <div>
             {index === 0 && form1()}
             {index === 1 && form2()}
-            {index === 2 && completePage()}
+            {index === 6 && completePage()}
         </div>
     );
 }

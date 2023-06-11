@@ -1,4 +1,6 @@
-
+* {
+    margin: 0;
+}
 
 html {
     height: 100%;
@@ -9,13 +11,8 @@ html {
     width: 100%;
 }
 
-
-.main-client-form h1 {
-    font-size: 150%;
-    text-align: center;
-    border-bottom: solid;
-    margin-top: 0;
-    color: #4fb1a1;
+.main {
+    height: auto;
 }
 
 .main-client-form h3 {
@@ -42,6 +39,7 @@ html {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    margin-top: 2.5vh;
 }
 
 .treatment-block input {
@@ -144,6 +142,26 @@ label {
     display: flex;
     justify-content: space-between;
     margin-bottom: 1.5vh;
+}
+
+.client-history {
+    margin: 0 5%;
+}
+
+.client-history h3{
+    margin-top: 1vh;
+}
+
+.question {
+    display: flex;
+}
+
+.question p {
+    margin: 0;
+}
+
+.radio-answers {
+    display: flex;
 }
 
 .nav-buttons {

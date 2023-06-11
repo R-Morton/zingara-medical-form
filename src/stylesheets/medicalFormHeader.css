@@ -17,3 +17,11 @@
     background-color: #4fb1a1;
 }
 
+.header h1 {
+    font-size: 150%;
+    text-align: center;
+    border-bottom: solid;
+    margin: auto;
+    color: #4fb1a1;
+    width: 90%;
+}
