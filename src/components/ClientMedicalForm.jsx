@@ -247,6 +247,142 @@ export function MedicalForm(props) {
         )
     }
 
+    function form3() {
+        return (
+            <div>
+                <header>
+                    <Header></Header>
+                </header>
+                <div className="main-3">
+                    <div className="client-history-2">
+                    <div className="question">
+                        <p>Q3.</p>
+                        <p>Are you currently experiencing or ever experienced the following?</p>
+                    </div>
+                    <div className="page3-answers">
+                        <div className="checkbox-answers">
+                            <input type="checkbox" id="arthritis" value="athritis" />
+                            <label>ARTHRITIS</label>
+                        </div>
+                        <div className="checkbox-answers">
+                            <input type="checkbox" id="blood-pressure" value="Blood Pressure" />
+                            <label>HIGH/LOW BLOOD PRESSURE</label>
+                        </div>
+                        <div className="checkbox-answers">
+                            <input type="checkbox" id="dizziness" value="dizziness" />
+                            <label>DIZZINESS</label>
+                        </div>
+                        <div className="checkbox-answers">
+                            <input type="checkbox" id="asthma" value="asthma" />
+                            <label>ASTHMA</label>
+                        </div>
+                        <div className="checkbox-answers">
+                            <input type="checkbox" id="fatigue" value="fatigue" />
+                            <label>FATIGUE</label>
+                        </div>
+                        <div className="checkbox-answers">
+                            <input type="checkbox" id="ibs" value="ibs" />
+                            <label>IRRITABLE BOWEL SYNDROME</label>
+                        </div>
+                        <div className="checkbox-answers">
+                            <input type="checkbox" id="migranes" value="migranes" />
+                            <label>MIGRANES</label>
+                        </div>
+                        <div className="checkbox-answers">
+                            <input type="checkbox" id="lympathic" value="lympathic" />
+                            <label>LYMPATHIC DISORDERS</label>
+                        </div>
+                        <div className="checkbox-answers">
+                            <input type="checkbox" id="sciatica" value="sciatica" />
+                            <label>SCIATICA</label>
+                        </div>
+                        <div className="checkbox-answers">
+                            <input type="checkbox" id="headaches/migranes" value="headaches/migranes" />
+                            <label>HEADACHES/MIGRAINES</label>
+                        </div>
+                        <div className="checkbox-answers">
+                            <input type="checkbox" id="osteoperosis" value="osteoperosis" />
+                            <label>OSTEOPEROSIS</label>
+                        </div>
+                        <div className="checkbox-answers">
+                            <input type="checkbox" id="cold-sores" value="cold sores" />
+                            <label>COLD SORES</label>
+                        </div>
+                        <div className="checkbox-answers">
+                            <input type="checkbox" id="fungal" value="fungal" />
+                            <label>FUNGAL/BACTERIAL INFECTIONS</label>
+                        </div>
+                        <div className="checkbox-answers">
+                            <input type="checkbox" id="acne" value="acne" />
+                            <label>ACNE, ECZEMA, PSORIASES</label>
+                        </div>
+                    </div>
+
+                    <div className="question">
+                        <p>Q4.</p>
+                        <p>Do you have any of the following?</p>
+                    </div>
+
+                    <div className="page3-answers">
+                        <div className="checkbox-answers">
+                            <input type="checkbox" id="anxiety" value="anxiety" />
+                            <label>ANXIETY</label>
+                        </div>
+                        <div className="checkbox-answers">
+                            <input type="checkbox" id="depression" value="depression" />
+                            <label>DEPRESSION</label>
+                        </div>
+                        <div className="checkbox-answers">
+                            <input type="checkbox" id="diabetes1" value="diabetes1" />
+                            <label>DIABETES TYPE 1</label>
+                        </div>
+                        <div className="checkbox-answers">
+                            <input type="checkbox" id="diabetes2" value="diabetes2" />
+                            <label>DIABETES TYPE 2</label>
+                        </div>
+                        <div className="checkbox-answers">
+                            <input type="checkbox" id="liverDisease" value="liver Disease" />
+                            <label>LIVER DISEASE</label>
+                        </div>
+                        <div className="checkbox-answers">
+                            <input type="checkbox" id="ibs" value="ibs" />
+                            <label>IRRITABLE BOWEL SYNDROME</label>
+                        </div>
+                        <div className="checkbox-answers">
+                            <input type="checkbox" id="bloodDisease" value="blood disease" />
+                            <label>BLOOD DISEASE</label>
+                        </div>
+                        <div className="checkbox-answers">
+                            <input type="checkbox" id="epilepsy" value="epilepsy" />
+                            <label>EPILEPSY</label>
+                        </div>
+                        <div className="checkbox-answers">
+                            <input type="checkbox" id="heartDisease" value="Heart Disease" />
+                            <label>HEART DISEASE/HEART CONDITIONS</label>
+                        </div>
+                        <div className="checkbox-answers">
+                            <input type="checkbox" id="fractures" value="fractured/broken bones" />
+                            <label>FRACTURES, DISLOCATIONS, BROKEN BONES, INJURY</label>
+                        </div>
+                        <div className="checkbox-answers">
+                            <input type="checkbox" id="cold-sores" value="cold sores" />
+                            <label>GASTROINTESINAL/DISGESTIVE ISSUES</label>
+                        </div>
+                        <div className="checkbox-answers">
+                            <input type="checkbox" id="other" value="other" />
+                            <label>OTHER</label>
+                        </div>
+                    </div>
+                    </div>
+                    <Nav index={index} handleNext={handleNext} handlePrevious={handlePrevious}></Nav>
+                </div>
+                <footer>
+                    <Footer />
+                </footer>
+            </div>
+        )
+    }
+
     function completePage() {
         return(
             <div>
@@ -261,6 +397,7 @@ export function MedicalForm(props) {
         <div>
             {index === 0 && form1()}
             {index === 1 && form2()}
+            {index === 2 && form3()}
             {index === 6 && completePage()}
         </div>
     );

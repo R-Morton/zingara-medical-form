@@ -202,10 +202,27 @@ label {
 
 .question p {
     margin: 0;
+    color: #4fb1a1;
 }
 
 .radio-answers {
     display: flex;
+}
+
+.client-history-2 {
+    margin: 2vh 5% 0 5%;
+}
+
+.page3-answers {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 1vh 8% 2.5vh 8%;
+}
+
+.checkbox-answers {
+    display: flex;
+    width: 50%;
+    align-items: center;
 }
 
 .nav-buttons {
