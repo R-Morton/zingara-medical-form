@@ -214,7 +214,7 @@ export function MedicalForm(props) {
                     </div>
                     <label>Have you seen a GP or specialist?</label>
                     <div className="radio-answers">
-                        <input id="red" type="radio" value="YES" name="gp" /> <label>YES</label>
+                        <input type="radio" value="YES" name="gp" /> <label>YES</label>
                         <input type="radio" value="NO" name="gp" /> <label>NO</label>
                     </div>
                     <div className="text-answers">
@@ -383,6 +383,116 @@ export function MedicalForm(props) {
         )
     }
 
+    function form4() {
+        return(
+            <div>
+                <header>
+                    <Header />
+                </header>
+                <div className="main-4">
+                    <div className="client-history-3">
+                        <div className="question">
+                            <p>Q5.</p>
+                            <p>Are you on any medication?</p>
+                        </div>
+                        <div className="answers">
+                            <div className="radio-answers">
+                                <input type="radio" value="YES" name="medication" /> <label>YES</label>
+                                <input type="radio" value="NO" name="medication" /> <label>NO</label>
+                            </div>
+                            <div className="text-answers">
+                                <label>Details</label>
+                                <input type="text"></input>
+                            </div>
+                        </div>
+                        <div className="question">
+                            <p>Q6.</p>
+                            <p>Have you had any recent or reoccuring infections or viruses?</p>
+                        </div>
+                        <div className="answers">
+                            <div className="radio-answers">
+                                <input type="radio" value="YES" name="infections" /> <label>YES</label>
+                                <input type="radio" value="NO" name="infections" /> <label>NO</label>
+                            </div>
+                            <div className="text-answers">
+                                <label>Details</label>
+                                <input type="text"></input>
+                            </div>
+                        </div>
+                        <div className="question">
+                            <p>Q7.</p>
+                            <p>Do you smoke or vape?</p>
+                        </div>
+                        <div className="answers">
+                            <div className="radio-answers">
+                                <input type="radio" value="YES" name="smoke" /> <label>YES</label>
+                                <input type="radio" value="NO" name="smoke" /> <label id="smoke-no">NO</label>
+                                <input type="radio" value="SOMETIMES" name="smoke" /> <label>SOMETIMES</label>
+                            </div>
+                        </div>
+                        <div className="question">
+                            <p>Q8.</p>
+                            <p>Are you pregnant or given birth recently?</p>
+                        </div>
+                        <div className="answers">
+                            <div className="radio-answers">
+                                <input type="radio" value="YES" name="medication" /> <label>YES</label>
+                                <input type="radio" value="NO" name="medication" /> <label>NO</label>
+                            </div>
+                            <div className="text-answers">
+                                <p>If selected 'yes', how many weeks are you?</p>
+                                <input type="text"></input>
+                            </div>
+                        </div>
+                    
+                    </div>
+                    <Nav index={index} handleNext={handleNext} handlePrevious={handlePrevious}></Nav>
+                </div>
+                <footer>
+                    <Footer />
+                </footer>
+            </div>
+        )
+    }
+
+    function form5() {
+        return(
+            <div>
+                <header>
+                    <Header />
+                </header>
+                <div className="main-5">
+                    <div className="client-history-4">
+
+                    </div>
+                    <Nav index={index} handleNext={handleNext} handlePrevious={handlePrevious}></Nav>
+                </div>
+                <footer>
+                    <Footer />
+                </footer>
+            </div>
+        )
+    }
+
+    function form6() {
+        return(
+            <div>
+                <header>
+                    <Header />
+                </header>
+                <div className="main-6">
+                    <div className="consent-form">
+
+                    </div>
+                    <Nav index={index} handleNext={handleNext} handlePrevious={handlePrevious}></Nav>
+                </div>
+                <footer>
+                    <Footer />
+                </footer>
+            </div>
+        )
+    }
+
     function completePage() {
         return(
             <div>
@@ -398,6 +508,9 @@ export function MedicalForm(props) {
             {index === 0 && form1()}
             {index === 1 && form2()}
             {index === 2 && form3()}
+            {index === 3 && form4()}
+            {index === 4 && form5()}
+            {index === 5 && form6()}
             {index === 6 && completePage()}
         </div>
     );
