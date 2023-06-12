@@ -463,6 +463,121 @@ export function MedicalForm(props) {
                 </header>
                 <div className="main-5">
                     <div className="client-history-4">
+                        <div className="question">
+                            <p>Q9.</p>
+                            <p>How frequently do you exercise in a week?</p>
+                        </div>
+                        <div className="page3-answers">
+                        <div className="checkbox-answers">
+                            <input type="radio" name="exercise" value="none" />
+                            <label>NONE</label>
+                        </div>
+                        <div className="checkbox-answers">
+                            <input type="radio" name="exercise" value="1-3 hours" />
+                            <label>1-3 HOURS</label>
+                        </div>
+                        <div className="checkbox-answers">
+                            <input type="radio" name="exercise" value="3-6 hours" />
+                            <label>3-6 HOURS</label>
+                        </div>
+                        <div className="checkbox-answers">
+                            <input type="radio" name="exercise" value="7+ hours" />
+                            <label>7+ HOURS</label>
+                        </div>
+                        </div>
+                        <div className="question">
+                            <p>Q10.</p>
+                            <p>What type of exercise do you do?</p>
+                        </div>
+                        <div className="page3-answers">
+                        <div className="checkbox-answers">
+                            <input type="checkbox" id="cardio" value="cardio" />
+                            <label>CARDIO</label>
+                        </div>
+                        <div className="checkbox-answers">
+                            <input type="checkbox" id="yoga" value="yoga/pilates" />
+                            <label>YOGA/PILATES</label>
+                        </div>
+                        <div className="checkbox-answers">
+                            <input type="checkbox" id="strength" value="strength" />
+                            <label>STRENGTH TRAINING</label>
+                        </div>
+                        <div className="checkbox-answers">
+                            <input type="checkbox" id="mobility" value="mobility" />
+                            <label>MOBILITY WORK</label>
+                        </div>
+                        <div className="checkbox-answers">
+                            <input type="checkbox" id="spin" value="spin/cycle" />
+                            <label>SPIN/RPM/CYCLE</label>
+                        </div>
+                        <div className="checkbox-answers">
+                            <input type="checkbox" id="group" value="group fitness" />
+                            <label>GROUP FITNESS CLASSES</label>
+                        </div>
+                        <div className="checkbox-answers">
+                            <input type="checkbox" id="sports" value="sports" />
+                            <label>SPORTS</label>
+                        </div>
+                        <div className="checkbox-answers">
+                            <input type="checkbox" id="dance" value="dance" />
+                            <label>DANCE</label>
+                        </div>
+                        <div className="checkbox-answers">
+                            <input type="checkbox" id="resistance" value="resistance" />
+                            <label>RESISTANCE</label>
+                        </div>
+                        <div className="checkbox-answers">
+                            <input type="checkbox" id="outdoor" value="outdoor" />
+                            <label>OUTDOOR WALKS/RUNS</label>
+                        </div>
+                        <div className="checkbox-answers">
+                            <input type="checkbox" id="selfDefence" value="self defence" />
+                            <label>SELF DEFENCE</label>
+                        </div>
+                        <div className="checkbox-answers">
+                            <input type="checkbox" id="q10Other" value="other" />
+                            <label>OTHER</label>
+                        </div>
+                    </div>
+                    <div className="question">
+                            <p>Q11.</p>
+                            <p>What would you like to accomplish from your treatment?</p>
+                        </div>
+                        <div className="page3-answers">
+                        <div className="checkbox-answers">
+                            <input type="checkbox" id="increasedMobility" value="increased mobility" />
+                            <label>INCREASED MOBILITY</label>
+                        </div>
+                        <div className="checkbox-answers">
+                            <input type="checkbox" id="painRelief" value="pain relief" />
+                            <label>PAIN RELIEF</label>
+                        </div>
+                        <div className="checkbox-answers">
+                            <input type="checkbox" id="rangeMotion" value="improved range of motion" />
+                            <label>IMPROVED RANGE OF MOTION</label>
+                        </div>
+                        <div className="checkbox-answers">
+                            <input type="checkbox" id="posture" value="improved posture" />
+                            <label>IMPROVED POSTURE</label>
+                        </div>
+                        <div className="checkbox-answers">
+                            <input type="checkbox" id="selfCare" value="regular self care" />
+                            <label>REGULAR SELF CARE</label>
+                        </div>
+                        <div className="checkbox-answers">
+                            <input type="checkbox" id="wellbeing" value="improve wellbeing" />
+                            <label>IMPROVE WELLBEING</label>
+                        </div>
+                        <div className="checkbox-answers">
+                            <input type="checkbox" id="all" value="all of the above" />
+                            <label>ALL OF THE ABOVE</label>
+                        </div>
+                        <div className="checkbox-answers">
+                            <input type="checkbox" id="q11Other" value="other" />
+                            <label>OTHER</label>
+                        </div>
+                    
+                    </div>
 
                     </div>
                     <Nav index={index} handleNext={handleNext} handlePrevious={handlePrevious}></Nav>
