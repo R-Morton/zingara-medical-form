@@ -117,7 +117,7 @@ export function MedicalForm(props) {
     
     function form1() {
         return(
-            <div className="main">
+            <div className="main-1">
                 <header>
                     <Header></Header>
                 </header>
@@ -195,7 +195,7 @@ export function MedicalForm(props) {
                 <header>
                     <Header />
                 </header>
-            <div className="main">
+            <div className="main-2">
                 <div className="client-history">
                     <h3>CLIENT HISTORY</h3>
                     <p>Please tick the following boxes</p>
@@ -215,7 +215,7 @@ export function MedicalForm(props) {
                     </div>
                     <label>HAVE YOU SEEN A GP OR SPECIALIST?</label>
                     <div className="radio-answers">
-                        <input type="radio" value="YES" name="gp" /> <label>YES</label>
+                        <input id="red" type="radio" value="YES" name="gp" /> <label>YES</label>
                         <input type="radio" value="NO" name="gp" /> <label>NO</label>
                     </div>
                     <div className="text-answers">
@@ -223,10 +223,11 @@ export function MedicalForm(props) {
                         <input type="text"></input>
                     </div>
                     </div>
-                    <div className="question">
+                    <div className="question" id="question2">
                         <p>Q2.</p>
                         <p>DO YOU GAVE ANY ALLERGIES, SENSITIVITES,INTOLERANCES?</p>
                     </div>
+                    <div className="answers">
                     <div className="radio-answers">
                         <input type="radio" value="YES" name="allergies" /> <label>YES</label>
                         <input type="radio" value="NO" name="allergies" /> <label>NO</label>
@@ -235,6 +236,7 @@ export function MedicalForm(props) {
                         <p>if selected 'yes', please provide more information</p>
                         <label>DETAILS</label>
                         <input type="text"></input>
+                    </div>
                     </div>
                 </div>
             <Nav index={index} handleNext={handleNext} handlePrevious={handlePrevious}></Nav>

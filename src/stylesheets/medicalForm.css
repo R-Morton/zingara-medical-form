@@ -11,9 +11,14 @@ html {
     width: 100%;
 }
 
-.main {
+.main-1, .main-2 {
     height: auto;
 }
+
+.main-2 p {
+    color: #4fb1a1;
+}
+
 
 .main-client-form h3 {
     margin: 5% 3%;
@@ -149,11 +154,39 @@ label {
 }
 
 .client-history h3{
-    margin-top: 1vh;
+    margin: 1vh 0;
+    color: #4fb1a1;
+    font-weight: lighter;
 }
 
 .question {
     display: flex;
+}
+
+.radio-answers label {
+    margin-right: 25%;
+}
+
+.radio-answers {
+    margin-bottom: 0.5vh;
+}
+
+.radio-answers input {
+    accent-color: #4fb1a1;
+}
+
+
+.answers {
+    margin: 0 6.5%;
+}
+
+.text-answers input {
+    width: 100%;
+    margin: 0.7vh 0;
+}
+
+#question2 {
+    margin-top: 1.5vh;
 }
 
 .question p {
