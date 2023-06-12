@@ -597,7 +597,58 @@ export function MedicalForm(props) {
                 </header>
                 <div className="main-6">
                     <div className="consent-form">
-
+                        <h3>CONSENT FORM</h3>
+                        <p>Consent for remedial massage: I have chosen to consult with and hereby give consent
+                            for massage therapy to be provided by a qualified health practitioner of or
+                            subcontracting for Zingara Massage who I understand is a member of a registered
+                            Association and holds all the required insurance and certification for massage
+                            treatment.
+                        </p>
+                        <p>
+                            I have provided a detailed medical history. I do not expect the therapist to have
+                            foreseen any previous or pre- existing condition I have not mentioned.
+                        </p>
+                        <p>
+                            I understand massage may provide benefits for certain conditions but results are not
+                            guaranteed. These benefits may include relief of muscular tension, relaxation, reduction
+                            of the symptoms of stress related conditions and provision of welbeing.
+                        </p>
+                        <p>
+                            I also understand that massage therapy may produce side effects such as muscle
+                            soreness, mild bruising, increased awareness of areas of pain and light headedness
+                            amongst other possible temporary outcomes
+                        </p>
+                        <p>
+                            I am aware that the therapist does not diagnose illness, prescribe medications or
+                            physically manipulate the spine or its immediate articulations.
+                        </p>
+                        <p>
+                            The therapist understands that I have the right to question procedures used and to
+                            receive an explanation of any procedures that the therapist uses.
+                        </p>
+                        <p>
+                            I will tell the therapist about any discomfort I may experience during the therapy
+                            session and understand the therapy will be adjusted accordingly.
+                        </p>
+                        <p>
+                            I agree to have my postural assessment and details of my treatment to be shared with
+                            my trainer, coach or other professional health practitioner if needed.
+                        </p>
+                        <p>
+                            Failure to notify cancellations 24 hours in advance (extenuating circumstances may be
+                            assessed by the massage practitioner) a charge will be incurred of 100% of the massage
+                            price or forfeit if pre-paid treatment.
+                        </p>
+                        <p>
+                            As a small business dedicated to the local community, Zingara Massage does their best
+                            to deliver exceptional service to you and in return do ask for your on-going support and
+                            timely payment within 24 hours of services rendered.
+                        </p>
+                        <p>
+                            The information I have given is true and I agree to the consent form. *
+                        </p>
+                        <h3>SIGNATURE:</h3>
+                        <input type="text" />
                     </div>
                     <Nav index={index} handleNext={handleNext} handlePrevious={handlePrevious}></Nav>
                 </div>

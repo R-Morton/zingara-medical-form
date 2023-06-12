@@ -265,6 +265,39 @@ label {
     margin: 1vh 5% 0 5%;
 }
 
+.consent-form {
+    margin: 1vh 5% 0 5%;
+}
+
+.consent-form h3{
+    color: #4fb1a1;
+}
+
+.consent-form p {
+    margin-bottom: 1vh;
+}
+
+.consent-form p:nth-child(12) {
+    margin-top: 4vh;
+}
+
+.consent-form p:nth-child(2) {
+    margin-top: 2vh;
+}
+
+.consent-form input {
+    width: 100%;
+    margin-top: 0.5vh;
+}
+
+.consent-form h3:first-child {
+    font-weight: lighter;
+}
+
+.consent-form h3:nth-child(13) {
+    font-weight: 500;
+}
+
 @media only screen and (min-height: 775px) {
     .footer {
         position: fixed;
