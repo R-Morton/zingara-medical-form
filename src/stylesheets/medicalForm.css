@@ -175,6 +175,17 @@ label {
     accent-color: #4fb1a1;
 }
 
+.question p {
+    font-weight: bold;
+}
+
+.answers label {
+    font-weight: 500;
+}
+
+.answers p {
+    font-family: lighter;
+}
 
 .answers {
     margin: 0 6.5%;

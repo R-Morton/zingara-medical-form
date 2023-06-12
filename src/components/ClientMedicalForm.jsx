@@ -200,8 +200,7 @@ export function MedicalForm(props) {
                     <h3>CLIENT HISTORY</h3>
                     <p>Please tick the following boxes</p>
                     <div className="question">
-                        <p>Q1.</p><p>ARE YOU CURRENTLY EXPERIENCING ANY PAIN, 
-                                    DISCOMFORT, RECENT INJURIES, AND/OR SURGERY?</p>
+                            <p>Q1.</p><p>Are you currently experiencing any pain, discomfort, recent injuries, and/or surgery?</p>
                     </div>
                     <div className="answers">
                     <div className="radio-answers">
@@ -210,22 +209,22 @@ export function MedicalForm(props) {
                     </div>
                     <div className="text-answers">
                         <p>if selected 'yes', please provide more information</p>
-                        <label>DETAILS (LOCATION/AREA, WHEN DID IT START ETC.)</label>
+                        <label>Details (Location/area, when did it start etc.)</label>
                         <input type="text"></input>
                     </div>
-                    <label>HAVE YOU SEEN A GP OR SPECIALIST?</label>
+                    <label>Have you seen a GP or specialist?</label>
                     <div className="radio-answers">
                         <input id="red" type="radio" value="YES" name="gp" /> <label>YES</label>
                         <input type="radio" value="NO" name="gp" /> <label>NO</label>
                     </div>
                     <div className="text-answers">
-                        <label>DETAILS</label>
+                        <label>Details</label>
                         <input type="text"></input>
                     </div>
                     </div>
                     <div className="question" id="question2">
                         <p>Q2.</p>
-                        <p>DO YOU GAVE ANY ALLERGIES, SENSITIVITES,INTOLERANCES?</p>
+                        <p>Do you have any allergies, sesitivites, intolerances?</p>
                     </div>
                     <div className="answers">
                     <div className="radio-answers">
@@ -234,7 +233,7 @@ export function MedicalForm(props) {
                     </div>
                     <div className="text-answers">
                         <p>if selected 'yes', please provide more information</p>
-                        <label>DETAILS</label>
+                        <label>Details</label>
                         <input type="text"></input>
                     </div>
                     </div>
