@@ -22,7 +22,6 @@ export function ClientInfo(props){
 
     return(
         <div>
-            <h1>Route param: {id}</h1>
             {localForm ?
                 <div>
                     <div>
@@ -46,7 +45,7 @@ export function ClientInfo(props){
                                 {localForm.pain.type ?
                                 <div>
                                 <p>{localForm.pain.type}</p>
-                                {localForm.pain.gp ? <p>{localForm.gp}</p> : <p>Not seen GP</p>}
+                                {localForm.pain.gp ? <p>{localForm.pain.gp}</p> : <p>Not seen GP</p>}
                                 </div>
                                 
                                 : <p>No pain</p>}
