@@ -20,7 +20,6 @@ export function MedicalForm(props) {
     const [localName, setLocalName] = useState("");
     const [localEmail, setLocalEmail] = useState("");
     const [localGender, setLocalGender] = useState("")
-    const [localAge, setLocalAge] = useState("")
     const [treatmentDate, setTreatmentDate] = useState(Date.now())
     const [therapist, setTherapist] = useState("")
     const [dateOfBirth, setDateOfBirth] = useState("")
@@ -30,6 +29,13 @@ export function MedicalForm(props) {
     const [occupation, setOccupation] = useState("")
     const [eContactName, setEContactName] = useState("")
     const [eContactNumber, setEContactNumber] = useState("")
+    const [painRadio, setPainRadio] = useState('')
+    const [painText, setPainText] = useState("")
+    const [q3Answers, setQ3Answers] = useState([])
+    const [gpRadio, setGpRadio] = useState('')
+    const [gpText, setGpText] = useState('')
+    const [allergiesRadio, setAllergiesRadio] = useState('')
+    const [allergiesText, setAllergiesText] = useState('')
 
     const [index, setIndex] = useState(0)
 
@@ -65,7 +71,7 @@ export function MedicalForm(props) {
         setOccupation(event.target.value)
     }
 
-    const handleChangeUsername = (event) => {
+    const handleChangeName = (event) => {
         setLocalName(event.target.value);
     }
 
@@ -81,8 +87,58 @@ export function MedicalForm(props) {
         setEContactNumber(event.target.value)
     }
 
-    const handleChangeAge = (event) => {
-        setLocalAge(event.target.value);
+    const handlePainRadioChange = (event) => {
+        if (event.target.value === 'no'){
+            setPainRadio(event.target.value)
+            setGpRadio("")
+            setGpText("")
+            setPainText("")
+        } else {
+            setPainRadio(event.target.value)
+        }
+    }
+
+    const handlePainTextChange = (event => {
+        setPainText(event.target.value)
+    })
+
+    const handleGpRadioChange = (event) => {
+        if (event.target.value === 'no') {
+            setGpRadio(event.target.value)
+            setGpText("")
+        } else {
+            setGpRadio(event.target.value)
+        }
+    }
+
+    const handleGpTextChange = (event) => {
+        setGpText(event.target.value)
+    }
+
+    const handleQ3AnswersChange = (event) => {
+        const value = event.target.value 
+        const isChecked = event.target.checked 
+
+        if (isChecked) {
+            setQ3Answers((prev) => [...prev, value])
+        } else {
+            setQ3Answers((prev) => 
+            prev.filter((item) => item !== value)
+            )
+        }
+    }
+
+    const handleAllergiesRadioChange = (event) => {
+        if (event.target.value === 'no') {
+            setAllergiesRadio(event.target.value)
+            setAllergiesText("")
+        } else {
+            setAllergiesRadio(event.target.value)
+        }
+    }
+
+    const handleAllergiesTextChange = (event) => {
+        setAllergiesText(event.target.value)
     }
 
     const handleNext = () => {
@@ -99,8 +155,19 @@ export function MedicalForm(props) {
 			id: id || globalMedicalData.length + 1,
 			name: localName,
 			email: localEmail,
-			age: localAge,
+			dob: dateOfBirth,
 			gender: localGender,
+            height: height,
+            address: address1,
+            occupation: occupation,
+            ename: eContactName,
+            enumber: eContactNumber,
+            pain: {
+                type: painText,
+                gp: gpText
+            },
+            allergies: allergiesText,
+            q4: q3Answers,
             notes: []
 		}
 
@@ -139,7 +206,7 @@ export function MedicalForm(props) {
                 <div className="block">
                     <div className="name-gender-block">
                         <label>NAME:</label>
-                        <input id="name" type="text" value={localName} onChange={handleChangeUsername} />
+                        <input id="name" type="text" value={localName} onChange={handleChangeName} />
                     </div>
                     <div className="dob-height-block">
                     <label>DOB:</label>
@@ -179,7 +246,7 @@ export function MedicalForm(props) {
                     <input type="text" value={eContactNumber} onChange={handleEContactNumber} />
                     </div>
                 </div>
-                <Nav index={index} handleNext={handleNext} handlePrevious={handlePrevious}></Nav>
+                <Nav index={index} handleNext={handleNext} handlePrevious={handlePrevious} saveToGlobal={saveToGlobal}></Nav>
             </div>
         </div>
             <footer>
@@ -204,22 +271,22 @@ export function MedicalForm(props) {
                     </div>
                     <div className="answers">
                     <div className="radio-answers">
-                        <input type="radio" value="YES" name="pain" /> <label>YES</label>
-                        <input type="radio" value="NO" name="pain" /> <label>NO</label>
+                        <input type="radio" value="yes" name="pain" checked={painRadio === 'yes'} onChange={handlePainRadioChange} /> <label>YES</label>
+                        <input type="radio" value="no" name="pain" checked={painRadio === 'no'} onChange={handlePainRadioChange} /> <label>NO</label>
                     </div>
                     <div className="text-answers">
                         <p>if selected 'yes', please provide more information</p>
                         <label>Details (Location/area, when did it start etc.)</label>
-                        <input type="text"></input>
+                        <input type="text" value={painText} onChange={handlePainTextChange} disabled={painRadio != 'yes'}></input>
                     </div>
                     <label>Have you seen a GP or specialist?</label>
                     <div className="radio-answers">
-                        <input type="radio" value="YES" name="gp" /> <label>YES</label>
-                        <input type="radio" value="NO" name="gp" /> <label>NO</label>
+                        <input type="radio" value="yes" name="gp" checked={gpRadio === 'yes'} disabled={painRadio != 'yes'} onChange={handleGpRadioChange}/> <label>YES</label>
+                        <input type="radio" value="no" name="gp" checked={gpRadio === 'no'} disabled={painRadio != 'yes'} onChange={handleGpRadioChange}/> <label>NO</label>
                     </div>
                     <div className="text-answers">
                         <label>Details</label>
-                        <input type="text"></input>
+                        <input type="text" value={gpText} onChange={handleGpTextChange} disabled={gpRadio != 'yes' || painRadio != 'yes'}></input>
                     </div>
                     </div>
                     <div className="question" id="question2">
@@ -228,17 +295,17 @@ export function MedicalForm(props) {
                     </div>
                     <div className="answers">
                     <div className="radio-answers">
-                        <input type="radio" value="YES" name="allergies" /> <label>YES</label>
-                        <input type="radio" value="NO" name="allergies" /> <label>NO</label>
+                        <input type="radio" value="yes" name="allergies" onChange={handleAllergiesRadioChange} /> <label>YES</label>
+                        <input type="radio" value="no" name="allergies" onChange={handleAllergiesRadioChange}/> <label>NO</label>
                     </div>
                     <div className="text-answers">
                         <p>if selected 'yes', please provide more information</p>
                         <label>Details</label>
-                        <input type="text"></input>
+                        <input type="text" value={allergiesText} onChange={handleAllergiesTextChange} disabled={allergiesRadio != 'yes'}></input>
                     </div>
                     </div>
                 </div>
-            <Nav index={index} handleNext={handleNext} handlePrevious={handlePrevious}></Nav>
+            <Nav index={index} handleNext={handleNext} handlePrevious={handlePrevious} saveToGlobal={saveToGlobal}></Nav>
             </div>
             <footer>
                 <Footer />
@@ -261,59 +328,59 @@ export function MedicalForm(props) {
                     </div>
                     <div className="page3-answers">
                         <div className="checkbox-answers">
-                            <input type="checkbox" id="arthritis" value="athritis" />
+                            <input type="checkbox" id="arthritis" value="athritis" onChange={handleQ3AnswersChange} />
                             <label>ARTHRITIS</label>
                         </div>
                         <div className="checkbox-answers">
-                            <input type="checkbox" id="blood-pressure" value="Blood Pressure" />
+                            <input type="checkbox" id="blood-pressure" value="Blood Pressure" onChange={handleQ3AnswersChange}/>
                             <label>HIGH/LOW BLOOD PRESSURE</label>
                         </div>
                         <div className="checkbox-answers">
-                            <input type="checkbox" id="dizziness" value="dizziness" />
+                            <input type="checkbox" id="dizziness" value="dizziness" onChange={handleQ3AnswersChange}/>
                             <label>DIZZINESS</label>
                         </div>
                         <div className="checkbox-answers">
-                            <input type="checkbox" id="asthma" value="asthma" />
+                            <input type="checkbox" id="asthma" value="asthma" onChange={handleQ3AnswersChange}/>
                             <label>ASTHMA</label>
                         </div>
                         <div className="checkbox-answers">
-                            <input type="checkbox" id="fatigue" value="fatigue" />
+                            <input type="checkbox" id="fatigue" value="fatigue" onChange={handleQ3AnswersChange}/>
                             <label>FATIGUE</label>
                         </div>
                         <div className="checkbox-answers">
-                            <input type="checkbox" id="ibs" value="ibs" />
+                            <input type="checkbox" id="ibs" value="ibs" onChange={handleQ3AnswersChange}/>
                             <label>IRRITABLE BOWEL SYNDROME</label>
                         </div>
                         <div className="checkbox-answers">
-                            <input type="checkbox" id="migranes" value="migranes" />
+                            <input type="checkbox" id="migranes" value="migranes" onChange={handleQ3AnswersChange}/>
                             <label>MIGRANES</label>
                         </div>
                         <div className="checkbox-answers">
-                            <input type="checkbox" id="lympathic" value="lympathic" />
+                            <input type="checkbox" id="lympathic" value="lympathic" onChange={handleQ3AnswersChange}/>
                             <label>LYMPATHIC DISORDERS</label>
                         </div>
                         <div className="checkbox-answers">
-                            <input type="checkbox" id="sciatica" value="sciatica" />
+                            <input type="checkbox" id="sciatica" value="sciatica" onChange={handleQ3AnswersChange}/>
                             <label>SCIATICA</label>
                         </div>
                         <div className="checkbox-answers">
-                            <input type="checkbox" id="headaches/migranes" value="headaches/migranes" />
+                            <input type="checkbox" id="headaches/migranes" value="headaches/migranes" onChange={handleQ3AnswersChange}/>
                             <label>HEADACHES/MIGRAINES</label>
                         </div>
                         <div className="checkbox-answers">
-                            <input type="checkbox" id="osteoperosis" value="osteoperosis" />
+                            <input type="checkbox" id="osteoperosis" value="osteoperosis" onChange={handleQ3AnswersChange}/>
                             <label>OSTEOPEROSIS</label>
                         </div>
                         <div className="checkbox-answers">
-                            <input type="checkbox" id="cold-sores" value="cold sores" />
+                            <input type="checkbox" id="cold-sores" value="cold sores" onChange={handleQ3AnswersChange}/>
                             <label>COLD SORES</label>
                         </div>
                         <div className="checkbox-answers">
-                            <input type="checkbox" id="fungal" value="fungal" />
+                            <input type="checkbox" id="fungal" value="fungal" onChange={handleQ3AnswersChange}/>
                             <label>FUNGAL/BACTERIAL INFECTIONS</label>
                         </div>
                         <div className="checkbox-answers">
-                            <input type="checkbox" id="acne" value="acne" />
+                            <input type="checkbox" id="acne" value="acne" onChange={handleQ3AnswersChange}/>
                             <label>ACNE, ECZEMA, PSORIASES</label>
                         </div>
                     </div>
@@ -374,7 +441,7 @@ export function MedicalForm(props) {
                         </div>
                     </div>
                     </div>
-                    <Nav index={index} handleNext={handleNext} handlePrevious={handlePrevious}></Nav>
+                    <Nav index={index} handleNext={handleNext} handlePrevious={handlePrevious} saveToGlobal={saveToGlobal}></Nav>
                 </div>
                 <footer>
                     <Footer />
@@ -446,7 +513,7 @@ export function MedicalForm(props) {
                         </div>
                     
                     </div>
-                    <Nav index={index} handleNext={handleNext} handlePrevious={handlePrevious}></Nav>
+                    <Nav index={index} handleNext={handleNext} handlePrevious={handlePrevious} saveToGlobal={saveToGlobal}></Nav>
                 </div>
                 <footer>
                     <Footer />
@@ -580,7 +647,7 @@ export function MedicalForm(props) {
                     </div>
 
                     </div>
-                    <Nav index={index} handleNext={handleNext} handlePrevious={handlePrevious}></Nav>
+                    <Nav index={index} handleNext={handleNext} handlePrevious={handlePrevious} saveToGlobal={saveToGlobal}></Nav>
                 </div>
                 <footer>
                     <Footer />
@@ -650,7 +717,7 @@ export function MedicalForm(props) {
                         <h3>SIGNATURE:</h3>
                         <input type="text" />
                     </div>
-                    <Nav index={index} handleNext={handleNext} handlePrevious={handlePrevious}></Nav>
+                    <Nav index={index} handleNext={handleNext} handlePrevious={handlePrevious} saveToGlobal={saveToGlobal}></Nav>
                 </div>
                 <footer>
                     <Footer />

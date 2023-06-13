@@ -6,7 +6,7 @@ export default function Nav(props) {
     return(
     <div className="nav-buttons">
         <button  className={`previous-button ${!index == 0 ? '' : 'hidden'}`} onClick={props.handlePrevious} >Previous</button>
-        <button onClick={props.handleNext}>{index == 5 ? "Submit" : "Next"}</button>
+        {index == 5 ? <button onClick={props.saveToGlobal}>Submit</button> : <button onClick={props.handleNext}>Next</button>}
     </div>
     )
 }
