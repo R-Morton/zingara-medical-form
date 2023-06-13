@@ -45,7 +45,10 @@ export function ClientInfo(props){
                                 {localForm.pain.type ?
                                 <div>
                                 <p>{localForm.pain.type}</p>
-                                {localForm.pain.gp ? <p>{localForm.pain.gp}</p> : <p>Not seen GP</p>}
+                                <h4>Seen GP for pain?</h4>
+                                {localForm.pain.gp ?
+                                <p>{localForm.pain.gp}</p>
+                                 : <p>Not seen GP</p>}
                                 </div>
                                 
                                 : <p>No pain</p>}
