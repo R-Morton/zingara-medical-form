@@ -19,4 +19,9 @@ Basic features currently allow the user to view clients and see their medical fo
 - [ ] Add search bar to search for forms in display
 - [X] Add client notes component that allows user to write and edit notes about the client sessions
 - [X] Add delete client and notes functionality
-- [ ] Visual designs recently sent in, applied to interactive medical form.
+- [ ] Update medical form view page to all client details from form
+
+### Interactive Form Styling
+- [ ] Mobile Sizing
+- [ ] Tablet Sizing
+- [ ] Desktop Sizing
