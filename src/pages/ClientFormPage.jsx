@@ -7,7 +7,8 @@ import { useMedicalData } from "../contexts/ClientMedicalContext"
 
 export default function ClientDisplayById() {
 
-    const {id} = useParams()
+    const {_id} = useParams()
+    console.log(_id)
 
     const globalFormData = useMedicalData();
 
@@ -20,10 +21,11 @@ export default function ClientDisplayById() {
     // Finding the form matching the id passed in as parameter and setting local state
     useEffect(() => {
         setLocalForm(globalFormData.find(form => {
+            console.log(form)
             // eslint-disable-next-line
-            return form.id == id
+            return form._id == _id
         }))
-    }, [globalFormData, id])
+    }, [globalFormData, _id])
 
     function toggleFormDisplay() {
         setFormDisplay(!formDisplay)
@@ -42,7 +44,7 @@ export default function ClientDisplayById() {
         return(
             <div>
                 <h1>Client Form</h1>
-                <ClientInfo id={id} />
+                <ClientInfo _id={_id} />
                 <button onClick={toggleFormDisplay}>Go back</button>
             </div>
         )
@@ -52,9 +54,9 @@ export default function ClientDisplayById() {
         return(
             <div>
                 <h1>Client Notes</h1>
-                <ClientNotesDisplay id={id} />
+                <ClientNotesDisplay _id={_id} />
                 {!NotesFormDisplay && <button onClick={toggleNotesFormDisplay}>Create new note</button>}
-                {NotesFormDisplay && <ClientNotesForm id={id} toggleForm={toggleNotesFormDisplay} />}
+                {NotesFormDisplay && <ClientNotesForm _id={_id} toggleForm={toggleNotesFormDisplay} />}
                 <br/><button onClick={toggleNotesDisplay}>Go back</button>
             </div>
         )

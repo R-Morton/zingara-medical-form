@@ -5,7 +5,7 @@ import "./form.css"
 
 export default function ClientNotesDisplay(props) {
 
-    const {id} = props
+    const {_id} = props
 
     // Local state
     const [localForm, setLocalForm] = useState({})
@@ -25,9 +25,9 @@ export default function ClientNotesDisplay(props) {
     useEffect(() => {
         setLocalForm(globalFormData.find(form => {
             // eslint-disable-next-line
-            return form.id == id
+            return form._id == _id
         }))
-    }, [globalFormData, id])
+    }, [globalFormData, _id])
 
 
     return(
@@ -37,11 +37,11 @@ export default function ClientNotesDisplay(props) {
         <h3>{localForm.name}</h3>
         {localForm.notes.map(notes => {
             return(
-                <div key={notes.id} class="notes">
-                    <p>Note Created: {new Date(notes.dateCreatedAt).toLocaleDateString()}</p>
+                <div key={notes._id} class="notes">
+                    <p>Note Created: {new Date(notes.createdAtDate).toLocaleDateString()}</p>
                     <p>{notes.content}</p>
-                    {!toggleEditNote[notes.id] && <button onClick={() => toggleEdit(notes.id)}>Edit Note</button>}
-                    {toggleEditNote[notes.id] && <ClientNotesForm id={id} noteId={notes.id} toggleEdit={toggleEdit} />}
+                    {!toggleEditNote[notes._id] && <button onClick={() => toggleEdit(notes._id)}>Edit Note</button>}
+                    {toggleEditNote[notes._id] && <ClientNotesForm id={_id} noteId={notes.id} toggleEdit={toggleEdit} />}
                 </div>
             )
         })}

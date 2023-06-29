@@ -18,8 +18,8 @@ export default function DisplayPage(props) {
 
                 {globalFormData.map(form => { // Find each client in global state and return a link to a dynamic page for each.
                     return(
-                        <div key={form.id}>
-                            <Link to={`/client/${form.id}`}>{form.name}</Link>
+                        <div key={form._id}>
+                            <Link to={`/client/${form._id}`}>{form.name}</Link>
                         </div>
                     )
                 })}

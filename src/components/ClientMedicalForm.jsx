@@ -167,7 +167,7 @@ export function MedicalForm(props) {
                 gp: gpText
             },
             allergies: allergiesText,
-            q4: q3Answers,
+            q3: q3Answers,
             notes: []
 		}
 

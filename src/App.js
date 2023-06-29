@@ -12,7 +12,7 @@ function App() {
         <Routes>
             <Route path="/" element={<Homepage />} />
             <Route path="/client" element={<DisplayPage />} />
-            <Route path="/client/:id" element={<ClientDisplayById />} />
+            <Route path="/client/:_id" element={<ClientDisplayById />} />
             <Route path="/client/form" element={<MedicalForm />} />
         </Routes>
     );
