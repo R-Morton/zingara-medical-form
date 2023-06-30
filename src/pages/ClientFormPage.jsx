@@ -8,7 +8,6 @@ import { useMedicalData } from "../contexts/ClientMedicalContext"
 export default function ClientDisplayById() {
 
     const {_id} = useParams()
-    console.log(_id)
 
     const globalFormData = useMedicalData();
 
@@ -21,7 +20,6 @@ export default function ClientDisplayById() {
     // Finding the form matching the id passed in as parameter and setting local state
     useEffect(() => {
         setLocalForm(globalFormData.find(form => {
-            console.log(form)
             // eslint-disable-next-line
             return form._id == _id
         }))

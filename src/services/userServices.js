@@ -1,5 +1,4 @@
-const api = 'http://localhost:3001';
-
+const api = process.env.REACT_APP_BACKEND_URL;
 
 export async function getUsers(){
     const response = await fetch(`${api}/users`)

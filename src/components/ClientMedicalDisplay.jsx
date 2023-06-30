@@ -4,7 +4,7 @@ import { useMedicalData } from "../contexts/ClientMedicalContext"
 
 export function ClientInfo(props){
     
-    let { id } = props
+    let { _id } = props
 
     // Local state
     const [localForm, setLocalForm] = useState({})
@@ -16,9 +16,9 @@ export function ClientInfo(props){
     useEffect(() => {
         setLocalForm(globalFormData.find(form => {
             // eslint-disable-next-line
-            return form.id == id
+            return form._id == _id
         }))
-    }, [globalFormData, id])
+    }, [globalFormData, _id])
 
     return(
         <div>
@@ -42,9 +42,9 @@ export function ClientInfo(props){
                         <h4>Experiencing Pain?</h4>
                         {localForm.pain && (
                             <div>
-                                {localForm.pain.type ?
+                                {localForm.pain.painType ?
                                 <div>
-                                <p>{localForm.pain.type}</p>
+                                <p>{localForm.pain.painType}</p>
                                 <h4>Seen GP for pain?</h4>
                                 {localForm.pain.gp ?
                                 <p>{localForm.pain.gp}</p>
@@ -60,9 +60,9 @@ export function ClientInfo(props){
                         <p>{localForm.allergies}</p>
                         : <p>None</p>
                         }
-                        <h4>Question 4 stuff:</h4>
-                        {localForm.q4 ? 
-                        localForm.q4.map((symptom) => {
+                        <h4>Question 3 stuff:</h4>
+                        {localForm.q3 ? 
+                        localForm.q3.map((symptom) => {
                             return(
                                 <p>{symptom}</p>
                             )
