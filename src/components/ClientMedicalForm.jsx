@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { createUser } from "../services/userServices";
 import { useMedicalData, useMedicalDispatch } from "../contexts/ClientMedicalContext";
 import "../stylesheets/medicalForm.css"
 import Header from "./medical_form/header";
@@ -152,7 +153,7 @@ export function MedicalForm(props) {
     const saveToGlobal = () => {
         // Creates a new form data, either with id passed in as a prop for updating or a new id.
 		let tempNewForm = {
-			id: id || globalMedicalData.length + 1,
+			//id: id || globalMedicalData.length + 1,
 			name: localName,
 			email: localEmail,
 			dob: dateOfBirth,
@@ -163,18 +164,19 @@ export function MedicalForm(props) {
             ename: eContactName,
             enumber: eContactNumber,
             pain: {
-                type: painText,
+                painType: painText,
                 gp: gpText
             },
             allergies: allergiesText,
             q3: q3Answers,
-            notes: []
+            //notes: []
 		}
 
         // If the id is passed in, we are updating the state of this client
 		if (id){
 			globalMedicalDispatch({type:"update", updatedForm: tempNewForm})
 		} else { // Else we are creating a new form
+            createUser(tempNewForm).then(data=> console.log(data))
 			globalMedicalDispatch({type:"create", newForm: tempNewForm})
             handleNext()
 		}
